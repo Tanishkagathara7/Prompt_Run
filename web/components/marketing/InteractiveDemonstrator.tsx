@@ -14,74 +14,68 @@ export const InteractiveDemonstrator: React.FC = () => {
     {
       id: 0,
       phase: '01',
-      title: 'Expense Logging & Integer Paise Calculation',
-      client: 'NEXT.JS CLIENT',
+      title: 'Log Any Everyday Expense',
+      client: 'STEP 1: ENTER PURCHASE',
       accent: 'blue',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
       description:
-        'Log grocery or dining out expenses with integer paise precision (₹650.00 = 65000 paise). Avoid floating-point rounding errors across the 30-day runway.',
-      requestMethod: 'POST',
-      requestPath: '/api/transactions',
-      payload: `{
-  "title": "Weekend Grocery Restock",
-  "amountPaise": 65000,
-  "category": "Essentials",
-  "date": "Day 14 of 30",
-  "isRecurring": false
-}`,
-      responseStatus: 'HTTP/1.1 201 Created',
-      responseDetail: 'Integer Paise Engine: Validated • Remaining Runway: ₹5,420.00',
+        'Enter what you spent — like groceries, snacks, or medicine. The app tracks every single rupee and paisa without rounding errors.',
+      requestMethod: 'YOU ENTER',
+      requestPath: 'Grocery Receipt',
+      payload: `Item: Weekend Grocery Restock
+Amount: ₹650.00 (Exact)
+Category: Essentials
+Today: Day 14 of 30`,
+      responseStatus: 'SAVED TO LEDGER',
+      responseDetail: 'Remaining Monthly Runway: ₹5,420.00 across 16 days',
       systemMetrics: [
-        { label: 'Precision', value: '100% Paise' },
-        { label: 'Runway Impact', value: '-₹40.62/day' },
+        { label: 'Amount Deducted', value: '₹650.00' },
+        { label: 'Impact on Daily Burn', value: '-₹40.62 / day' },
       ],
     },
     {
       id: 1,
       phase: '02',
-      title: 'Safe Daily Burn Allowance Engine',
-      client: 'EXPRESS CORE API',
+      title: 'Automatic Daily Limit Recalculation',
+      client: 'STEP 2: SMART MATH',
       accent: 'lavender',
       badgeBg: 'bg-violet-50 text-violet-700 border-violet-200',
       description:
-        'The financial engine subtracts locked commitments and protected cushion, dividing the remaining balance across remaining days.',
-      requestMethod: 'GET',
-      requestPath: '/api/analytics/overview',
-      payload: `{
-  "startingBudgetPaise": 1000000,
-  "lockedCommitmentsPaise": 300000,
-  "cushionPaise": 150000,
-  "daysRemaining": 16
-}`,
-      responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Daily Safe Burn: ₹338.75/day • Status: Zero Deficit Protected',
+        'The calculator isolates rent, bills, and emergency savings, then splits the remaining free money evenly across all remaining days.',
+      requestMethod: 'AUTO-CALCULATION',
+      requestPath: 'Formula Breakdown',
+      payload: `Starting Monthly Budget: ₹10,000.00
+Locked Bills (Rent & WiFi): -₹3,000.00
+Protected Savings Cushion: -₹1,500.00
+Spent So Far: -₹4,580.00
+Safe Free Cash: ₹920.00 for 16 Days`,
+      responseStatus: 'NEW SAFE SPEND LIMIT',
+      responseDetail: 'You can safely spend up to ₹338.75 today without entering debt.',
       systemMetrics: [
-        { label: 'Safe Daily Burn', value: '₹338.75' },
-        { label: 'Runway Health', value: 'Optimal' },
+        { label: 'Safe Daily Ceiling', value: '₹338.75 / day' },
+        { label: 'Runway Health', value: '100% Solvency' },
       ],
     },
     {
       id: 2,
       phase: '03',
-      title: 'What-If Simulation & Savings Buffer Lock',
-      client: 'NEXT.JS APP ROUTER',
+      title: 'Test Before Buying (Impulse Shield)',
+      client: 'STEP 3: TEST "WHAT-IF?"',
       accent: 'green',
       badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       description:
-        'Simulate impulse purchases before spending. Instantly preview how a ₹1,200 weekend trip impacts your daily allowance before locking ₹1,500 safely into savings.',
-      requestMethod: 'POST',
-      requestPath: '/api/simulate/what-if',
-      payload: `{
-  "proposedExpensePaise": 120000,
-  "currentDailyBurn": 338.75,
-  "projectedDailyBurn": 263.75,
-  "verdict": "Caution: Reduces daily allowance by 22%"
-}`,
-      responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Simulation Verified • Savings Cushion Safeguarded',
+        'Want to buy something unplanned? Test the price first to preview how it will change your daily allowance before spending real cash.',
+      requestMethod: 'SIMULATOR TEST',
+      requestPath: 'Impulse Check',
+      payload: `Proposed Purchase: ₹1,200.00 Weekend Dinner
+Current Daily Allowance: ₹338.75 / day
+Projected Allowance If Purchased: ₹263.75 / day
+Alert: Reduces daily allowance by 22% for the rest of the month!`,
+      responseStatus: 'IMPULSE WARNING ISSUED',
+      responseDetail: 'Your ₹1,500 emergency savings cushion remains completely untouched.',
       systemMetrics: [
-        { label: 'Impulse Shield', value: 'Active' },
-        { label: 'Cushion Saved', value: '₹1,500.00' },
+        { label: 'Overspending Shield', value: 'Protected' },
+        { label: 'Savings Protected', value: '₹1,500.00' },
       ],
     },
   ];
@@ -109,7 +103,6 @@ export const InteractiveDemonstrator: React.FC = () => {
                   : 'bg-white/80 hover:bg-white border-black/[0.08] hover:border-black/[0.16] shadow-xs hover:-translate-y-0.5'
               }`}
             >
-              {/* High-contrast top accent bar for active tab */}
               {isActive && (
                 <span className="absolute top-0 left-0 right-0 h-1 bg-blue-600" />
               )}
@@ -119,7 +112,7 @@ export const InteractiveDemonstrator: React.FC = () => {
                     isActive ? step.badgeBg : 'bg-zinc-100 text-zinc-600 border-zinc-200'
                   }`}
                 >
-                  PHASE {step.phase}
+                  STEP {step.phase}
                 </span>
                 <span className="text-xs font-mono text-zinc-400">0{idx + 1}/03</span>
               </div>
@@ -131,10 +124,10 @@ export const InteractiveDemonstrator: React.FC = () => {
                 {isActive ? (
                   <span className="text-blue-600 font-bold text-[11px] flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
-                    Active
+                    Selected
                   </span>
                 ) : (
-                  <span className="text-zinc-400 text-[11px]">Inspect &rarr;</span>
+                  <span className="text-zinc-400 text-[11px]">Click to see &rarr;</span>
                 )}
               </div>
             </button>
@@ -155,12 +148,12 @@ export const InteractiveDemonstrator: React.FC = () => {
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold border ${current.badgeBg}`}>
                 {current.client}
               </span>
-              <span className="text-xs text-zinc-400 font-mono">• ACTIVE PIPELINE</span>
+              <span className="text-xs text-zinc-400 font-mono">• INTERACTIVE STEP</span>
             </div>
             <h3 className="text-xl font-bold tracking-tight text-zinc-900">
               {current.title}
             </h3>
-            <p className="text-sm text-zinc-600 max-w-2xl">
+            <p className="text-sm text-zinc-600 max-w-2xl font-normal">
               {current.description}
             </p>
           </div>
@@ -177,37 +170,37 @@ export const InteractiveDemonstrator: React.FC = () => {
 
         {/* Request & Response Split Display */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {/* Request Stream */}
+          {/* User Input Stream */}
           <div className="rounded-xl bg-zinc-50/80 text-zinc-900 p-4 font-mono text-xs space-y-3 shadow-xs border border-zinc-200/80">
             <div className="flex items-center justify-between border-b border-zinc-200/80 pb-2 text-xs">
               <span className="text-zinc-600 flex items-center gap-1.5 font-semibold">
                 <Terminal className="w-3.5 h-3.5 text-blue-600" />
-                OUTBOUND DISPATCH
+                {current.requestMethod}
               </span>
               <span className="text-blue-600 font-bold">
-                {current.requestMethod} {current.requestPath}
+                {current.requestPath}
               </span>
             </div>
-            <pre className="text-zinc-800 overflow-x-auto p-2.5 bg-white rounded-lg text-xs leading-relaxed border border-zinc-200/60 shadow-2xs">
+            <pre className="text-zinc-800 overflow-x-auto p-2.5 bg-white rounded-lg text-xs leading-relaxed border border-zinc-200/60 shadow-2xs font-sans whitespace-pre-wrap">
               {current.payload}
             </pre>
           </div>
 
-          {/* Response Stream */}
+          {/* System Response Stream */}
           <div className="rounded-xl bg-zinc-50/80 text-zinc-900 p-4 font-mono text-xs space-y-3 shadow-xs border border-zinc-200/80">
             <div className="flex items-center justify-between border-b border-zinc-200/80 pb-2 text-xs">
               <span className="text-zinc-600 flex items-center gap-1.5 font-semibold">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                CONFIRMED RECEIPT
+                AUTOMATIC PROTECTION
               </span>
               <span className="text-emerald-700 font-bold text-xs font-mono">
                 {current.responseStatus}
               </span>
             </div>
-            <div className="space-y-2 p-2.5 bg-white rounded-lg border border-zinc-200/60 shadow-2xs">
-              <div className="text-zinc-600 text-xs">{current.responseDetail}</div>
-              <div className="text-emerald-700 text-xs flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Cryptographic Handshake Verified
+            <div className="space-y-2 p-2.5 bg-white rounded-lg border border-zinc-200/60 shadow-2xs font-sans">
+              <div className="text-zinc-800 text-xs font-medium">{current.responseDetail}</div>
+              <div className="text-emerald-700 text-xs flex items-center gap-1.5 font-semibold pt-1">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Zero Deficit Safety Checks Active
               </div>
             </div>
           </div>

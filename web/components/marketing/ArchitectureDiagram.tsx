@@ -19,43 +19,43 @@ export const ArchitectureDiagram: React.FC = () => {
   const nodes: Record<string, ArchNode> = {
     web: {
       id: 'web',
-      name: 'Next.js 16 Runway Command',
-      role: 'FINANCIAL RUNWAY WORKSPACE',
-      badge: 'NODE 01',
+      name: 'Daily Budget Planner',
+      role: 'YOUR COMMAND SCREEN',
+      badge: 'SCREEN 01',
       accentBg: 'from-emerald-500/10 to-transparent',
       badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      tech: ['Next.js App Router', 'React 19', 'Tailwind CSS', 'Lenis Smooth Motion', 'Paise Formatter'],
-      specs: 'High-density ₹10,000 budget operations center. Live daily burn allowances, reactive What-If simulators, and integer-precision cashflow trackers.',
+      tech: ['Live Balance', 'Daily Spending Limit', 'Visual Charts', 'Instant Updates', 'Works On Mobile & Laptop'],
+      specs: 'Your clear everyday view showing exactly how much you can spend today, your total remaining balance, and how many days are left in the month.',
     },
     backend: {
       id: 'backend',
-      name: 'Node.js / Express Core Server',
-      role: 'FINANCIAL CALCULATION ENGINE',
-      badge: 'CORE ENGINE',
+      name: 'Smart Budget Calculator',
+      role: 'AUTOMATIC MATH ENGINE',
+      badge: 'SMART BRAIN',
       accentBg: 'from-blue-500/10 to-transparent',
       badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-      tech: ['Express.js', 'Integer Math', 'JWT Auth', 'Runway Validator', 'RBAC Middleware'],
-      specs: 'Central financial engine running on port 5000. Performs safe burn projections, commitment locking, and atomic MongoDB Atlas transactions.',
+      tech: ['Accurate to the Paisa', 'Auto Subtracts Rent & Bills', 'Instant Recalculation', 'Zero Math Errors', 'Safe Login Protection'],
+      specs: 'The quiet background engine that does all the hard math for you. Whenever you buy something, it recalculates your safe daily spending limit in milliseconds.',
     },
     analytics: {
       id: 'analytics',
-      name: 'Burn Rate & What-If Pipeline',
-      role: 'IMPULSE PREDICTION ENGINE',
-      badge: 'SIMULATOR',
+      name: '“What-If?” Decision Tester',
+      role: 'IMPULSE BUY PROTECTOR',
+      badge: 'SPEND SIMULATOR',
       accentBg: 'from-amber-500/10 to-transparent',
       badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
-      tech: ['What-If Projection', 'Deficit Warning', 'Paise Aggregation', 'Category Burn'],
-      specs: 'Mathematical simulation engine predicting allowance reductions before impulse purchases are confirmed and ring-fencing savings buffers.',
+      tech: ['Test Before You Buy', 'Overspending Warnings', 'Month-End Predictor', 'Emergency Savings Shield', 'Habit Insights'],
+      specs: 'Wondering if you can afford that weekend dinner or new shoes? Test the price here first. It warns you if the purchase will ruin your remaining daily allowance.',
     },
     database: {
       id: 'database',
-      name: 'MongoDB Atlas Persistence',
-      role: 'PAISE LEDGER DATASTORE',
-      badge: 'PERSISTENCE',
+      name: 'Safe Records Vault',
+      role: 'PRIVATE DIGITAL STORAGE',
+      badge: 'SAFE STORAGE',
       accentBg: 'from-violet-500/10 to-transparent',
       badgeColor: 'bg-violet-50 text-violet-700 border-violet-200',
-      tech: ['Transaction Schemas', 'Budget Profiles', 'Savings Collections', 'Indexed Queries'],
-      specs: 'Primary persistent datastore. Enforces schema validations and indexed queries across all financial transactions, commitments, and user profiles.',
+      tech: ['Private Password Lock', 'Receipt & Slip Storage', 'Never Loses Data', 'Protected Savings Lock', 'Always Synced'],
+      specs: 'Keeps all your past receipts, grocery logs, and bills organized in one safe private place so you never lose track of where your ₹10,000 went.',
     },
   };
 
@@ -65,17 +65,15 @@ export const ArchitectureDiagram: React.FC = () => {
     <div className="w-full space-y-8 select-none">
       <div className="topology-header max-w-2xl space-y-2">
         <div className="text-xs font-mono font-bold tracking-wider text-emerald-600 uppercase">
-          {'// 08. FINANCIAL TOPOLOGY & DATA BUS'}
+          {'// 08. HOW IT KEEPS YOU SOLVENT'}
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-          CENTRAL BUDGET RUNWAY TOPOLOGY
+          How Your ₹10,000 Is Protected 24/7
         </h2>
         <p className="text-sm text-zinc-600">
-          Authoritative financial calculation engine and integer paise ledger powering the SurvivalRun command center.
+          Four simple parts work together seamlessly so you never run out of money before month-end.
         </p>
       </div>
-
-
 
       {/* Interactive Topology Bento Grid */}
       <div role="tablist" aria-label="Architecture Nodes" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -109,7 +107,7 @@ export const ArchitectureDiagram: React.FC = () => {
                       </span>
                     ) : (
                       <span className="text-[10px] font-mono text-zinc-400 group-hover:text-zinc-600">
-                        Select &rarr;
+                        View &rarr;
                       </span>
                     )}
                   </div>
@@ -125,7 +123,7 @@ export const ArchitectureDiagram: React.FC = () => {
               </div>
 
               <div className="pt-2.5 mt-2 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-400">
-                <span>Click to view specs</span>
+                <span>Click to see how it works</span>
                 <span className={`transition-transform duration-200 ${isSelected ? 'text-blue-600 translate-x-0.5' : 'group-hover:translate-x-0.5'}`}>
                   &rarr;
                 </span>
@@ -143,7 +141,7 @@ export const ArchitectureDiagram: React.FC = () => {
               <span className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full border ${active.badgeColor}`}>
                 {active.badge}
               </span>
-              <span className="text-xs font-mono text-zinc-400">• ACTIVE INSPECTOR</span>
+              <span className="text-xs font-mono text-zinc-400">• FEATURE PREVIEW</span>
             </div>
             <h3 className="text-2xl font-bold tracking-tight text-zinc-900 mt-1">
               {active.name}
@@ -154,21 +152,21 @@ export const ArchitectureDiagram: React.FC = () => {
           </span>
         </div>
 
-        <p className="text-sm text-zinc-600 leading-relaxed max-w-3xl">
+        <p className="text-sm sm:text-base text-zinc-600 leading-relaxed max-w-3xl font-normal">
           {active.specs}
         </p>
 
         <div>
           <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider mb-2">
-            Integrated Technologies & Modules
+            What This Does For You
           </div>
           <div className="flex flex-wrap gap-2">
             {active.tech.map((t) => (
               <span
                 key={t}
-                className="px-3 py-1 rounded-lg bg-zinc-100/80 border border-zinc-200 text-zinc-800 text-xs font-mono font-medium"
+                className="px-3 py-1 rounded-lg bg-zinc-100/80 border border-zinc-200 text-zinc-800 text-xs font-medium"
               >
-                {t}
+                ✓ {t}
               </span>
             ))}
           </div>

@@ -416,29 +416,31 @@ export default function MarketingPage() {
 
             {/* Visual Docking Cards */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center max-w-5xl">
-              {/* Desktop Dispatch Preview */}
+              {/* Everyday Expense Example */}
               <div className="sync-desktop-card md:col-span-7 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>RUNWAY TRANSACTION DISPATCH</span>
-                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Integer Paise</span>
+                  <span>WHEN YOU RECORD AN EXPENSE</span>
+                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Real Example</span>
                 </div>
-                <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
-                  <div className="text-zinc-500">{'// Deducting grocery purchase'}</div>
-                  <div className="font-semibold">recordTransaction(&apos;txn_08&apos;, &#123; amountPaise: 65000, category: &apos;food&apos; &#125;)</div>
-                  <div className="text-emerald-600 font-semibold">✓ Engine confirmed: Allowance adjusted to ₹338.75/day</div>
+                <div className="space-y-2 text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
+                  <div className="text-zinc-500 font-medium">Logged: ₹650.00 for Grocery Restock</div>
+                  <div className="font-semibold text-sm text-zinc-900">Remaining Budget: ₹5,420.00 across 16 Days</div>
+                  <div className="text-emerald-600 font-semibold flex items-center gap-1.5">
+                    ✓ New safe daily spending ceiling: ₹338.75 / day
+                  </div>
                 </div>
               </div>
 
-              {/* Database Telemetry Preview */}
+              {/* Instant Protection Preview */}
               <div className="sync-mobile-card md:col-span-5 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>PERSISTENT RUNWAY STATE</span>
-                  <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">MongoDB Atlas</span>
+                  <span>PEACE OF MIND GUARANTEE</span>
+                  <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">Zero Guesswork</span>
                 </div>
-                <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
-                  <div className="text-zinc-500">{'// Real-time cache revalidation'}</div>
-                  <div className="font-semibold">revalidateRunwaySnapshot()</div>
-                  <div className="text-emerald-600 font-semibold">✓ Dashboard synced in &lt; 20ms</div>
+                <div className="space-y-2 text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
+                  <div className="text-zinc-500 font-medium">Automatic Protection:</div>
+                  <div className="font-semibold text-zinc-800">Rent &amp; bills stay 100% untouched.</div>
+                  <div className="text-emerald-600 font-semibold">✓ Projected Month-End: Zero Deficit</div>
                 </div>
               </div>
             </div>
