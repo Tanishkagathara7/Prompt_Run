@@ -10,7 +10,6 @@ A production-ready web + backend monorepo. Next.js 16 App Router on the frontend
 | Backend API | Node.js + Express |
 | Database | MongoDB Atlas via Mongoose |
 | Auth | JWT (email/password + Google/GitHub OAuth) |
-| AI | OpenRouter AI Gateway |
 | File Storage | Multer (local/cloud) |
 | Styling | Tailwind CSS |
 
@@ -60,11 +59,6 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```env
 MONGODB_URI=mongodb+srv://...
 JWT_SECRET=your_jwt_secret
-OPENROUTER_API_KEY=...
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
-GITHUB_CLIENT_ID=...
-GITHUB_CLIENT_SECRET=...
 ```
 
 ## Domain Generation

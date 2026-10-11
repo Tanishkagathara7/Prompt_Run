@@ -28,7 +28,6 @@ A two-tier web platform with a Next.js 16 frontend and a Node.js/Express backend
 │  /api/auth        JWT + OAuth (Google, GitHub)      │
 │  /api/items       DomainItem CRUD                   │
 │  /api/files       Multer file upload                │
-│  /api/ai          OpenRouter AI Gateway             │
 │  /api/analytics   Aggregated metrics                │
 │  /api/notifications Push + in-app alerts           │
 └──────────────────────────────────────────────────┬──┘
