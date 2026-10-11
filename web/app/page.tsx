@@ -492,13 +492,13 @@ export default function MarketingPage() {
             <div className="lg:col-span-7 relative">
               <TiltCard maxTilt={14} perspective={1200} className="w-full">
                 <div className="engineering-visual-frame bento-card p-4 sm:p-6 shadow-xl bg-white/90 backdrop-blur-md transition-all duration-300 hover:shadow-2xl">
-                  <div className="relative aspect-[2083/755] w-full rounded-xl bg-zinc-50/70 p-2 overflow-hidden border border-black/[0.06]">
+                  <div className="relative aspect-[1921/558] w-full rounded-2xl bg-zinc-50/70 overflow-hidden border border-black/[0.06] shadow-md">
                     <Image
                       src="/logo.webp"
-                      alt="APP Logo"
+                      alt="Prompt Run Logo"
                       fill
-                      sizes="(max-width: 768px) 100vw, 700px"
-                      className="object-contain p-2"
+                      sizes="(max-width: 768px) 100vw, 850px"
+                      className="object-cover object-center"
                       priority
                     />
                   </div>

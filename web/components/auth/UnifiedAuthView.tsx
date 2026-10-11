@@ -124,7 +124,7 @@ export function UnifiedAuthView({ initialMode = 'signin' }: AuthPageProps) {
         />
 
         {/* Logo presentation with load animation and cursor tilt */}
-        <div className="relative pt-2 pb-2">
+        <div className="relative pt-3 pb-3 w-full">
           <TiltCard
             key={mode}
             flipOnLoad={true}
@@ -133,16 +133,16 @@ export function UnifiedAuthView({ initialMode = 'signin' }: AuthPageProps) {
             maxTilt={12}
             perspective={1200}
             glare={false}
-            className="w-full max-w-xl"
+            className="w-full max-w-2xl"
           >
-            <div className="relative aspect-[2083/755] w-full flex items-center justify-start cursor-pointer">
+            <div className="relative aspect-[1921/558] w-full flex items-center justify-start cursor-pointer rounded-2xl overflow-hidden shadow-lg shadow-black/[0.04]">
               <Image
                 src="/logo.webp"
-                alt="APP Logo"
+                alt="Prompt Run Logo"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 650px"
-                className="object-contain object-left filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.06)] hover:scale-[1.02] transition-transform duration-300"
+                sizes="(max-width: 1024px) 100vw, 750px"
+                className="object-cover object-center filter drop-shadow-[0_12px_30px_rgba(0,0,0,0.08)] hover:scale-[1.03] transition-transform duration-300"
               />
             </div>
           </TiltCard>
