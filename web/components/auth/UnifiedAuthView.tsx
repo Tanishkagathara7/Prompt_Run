@@ -137,7 +137,7 @@ export function UnifiedAuthView({ initialMode = 'signin' }: AuthPageProps) {
           >
             <div className="relative aspect-[2083/755] w-full flex items-center justify-start cursor-pointer">
               <Image
-                src="/code.png"
+                src="/logo.webp"
                 alt="APP Logo"
                 fill
                 priority
