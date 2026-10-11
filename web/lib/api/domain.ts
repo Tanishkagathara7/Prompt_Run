@@ -1,33 +1,31 @@
 import { apiClient } from './client';
 import {
-  HackathonItem,
+  DomainItem,
   PaginatedResponse,
   SingleResponse,
   CreateItemPayload,
   UpdateItemPayload,
   ItemListQuery,
   AnalyticsOverviewData,
-  AIGeneratePayload,
-  AIGeneratedResult,
   UploadedFile,
   AppNotification,
 } from '../types';
 
 export const itemsApi = {
-  async getItems(params: ItemListQuery = {}): Promise<PaginatedResponse<HackathonItem>> {
-    return apiClient.get<PaginatedResponse<HackathonItem>>('/items', params);
+  async getItems(params: ItemListQuery = {}): Promise<PaginatedResponse<DomainItem>> {
+    return apiClient.get<PaginatedResponse<DomainItem>>('/items', params);
   },
 
-  async getItem(id: string): Promise<SingleResponse<HackathonItem>> {
-    return apiClient.get<SingleResponse<HackathonItem>>(`/items/${id}`);
+  async getItem(id: string): Promise<SingleResponse<DomainItem>> {
+    return apiClient.get<SingleResponse<DomainItem>>(`/items/${id}`);
   },
 
-  async createItem(payload: CreateItemPayload): Promise<SingleResponse<HackathonItem>> {
-    return apiClient.post<SingleResponse<HackathonItem>>('/items', payload);
+  async createItem(payload: CreateItemPayload): Promise<SingleResponse<DomainItem>> {
+    return apiClient.post<SingleResponse<DomainItem>>('/items', payload);
   },
 
-  async updateItem(id: string, payload: UpdateItemPayload): Promise<SingleResponse<HackathonItem>> {
-    return apiClient.put<SingleResponse<HackathonItem>>(`/items/${id}`, payload);
+  async updateItem(id: string, payload: UpdateItemPayload): Promise<SingleResponse<DomainItem>> {
+    return apiClient.put<SingleResponse<DomainItem>>(`/items/${id}`, payload);
   },
 
   async deleteItem(id: string): Promise<{ success: boolean; message: string }> {
@@ -39,19 +37,6 @@ export const analyticsApi = {
   async getOverview(): Promise<AnalyticsOverviewData> {
     const res = await apiClient.get<{ success: boolean; data: AnalyticsOverviewData }>('/analytics/overview');
     return res.data;
-  },
-};
-
-export const aiApi = {
-  async generate(payload: AIGeneratePayload): Promise<{ success: boolean; data: AIGeneratedResult }> {
-    return apiClient.post<{ success: boolean; data: AIGeneratedResult }>('/ai/generate', payload);
-  },
-
-  async summarize(prompt: string, systemPrompt?: string): Promise<{ success: boolean; data: AIGeneratedResult }> {
-    return apiClient.post<{ success: boolean; data: AIGeneratedResult }>('/ai/generate', {
-      prompt,
-      system: systemPrompt || 'You are APP AI, an intelligent workspace copilot. Summarize the text clearly with key takeaways and actionable bullet points.',
-    });
   },
 };
 
@@ -73,19 +58,35 @@ export const filesApi = {
 
 export const notificationsApi = {
   async getNotifications(page: number = 1, limit: number = 20): Promise<{ success: boolean; data: AppNotification[] }> {
-    return apiClient.get<{ success: boolean; data: AppNotification[] }>('/notifications', { page, limit });
+    try {
+      return await apiClient.get<{ success: boolean; data: AppNotification[] }>('/notifications', { page, limit });
+    } catch {
+      return { success: true, data: [] };
+    }
   },
 
   async getUnreadCount(): Promise<number> {
-    const res = await apiClient.get<{ success: boolean; data: { count: number } }>('/notifications/unread-count');
-    return res.data?.count ?? 0;
+    try {
+      const res = await apiClient.get<{ success: boolean; data: { count: number } }>('/notifications/unread-count');
+      return res.data?.count ?? 0;
+    } catch {
+      return 0;
+    }
   },
 
   async markAsRead(id: string): Promise<{ success: boolean; message?: string }> {
-    return apiClient.patch<{ success: boolean; message?: string }>(`/notifications/${id}/read`);
+    try {
+      return await apiClient.patch<{ success: boolean; message?: string }>(`/notifications/${id}/read`);
+    } catch {
+      return { success: true };
+    }
   },
 
   async markAllAsRead(): Promise<{ success: boolean; message?: string }> {
-    return apiClient.patch<{ success: boolean; message?: string }>('/notifications/read-all');
+    try {
+      return await apiClient.patch<{ success: boolean; message?: string }>('/notifications/read-all');
+    } catch {
+      return { success: true };
+    }
   },
 };

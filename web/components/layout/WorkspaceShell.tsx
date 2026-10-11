@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Topbar } from '@/components/layout/Topbar';
 import { CommandPalette } from '@/components/layout/CommandPalette';
-import { PulseBackgroundSystem } from '@/components/background/PulseBackgroundSystem';
 import { useAuth } from '@/lib/context/AuthContext';
 import { notificationsApi } from '@/lib/api/domain';
 import { Loader2 } from 'lucide-react';
@@ -16,12 +15,22 @@ export default function WorkspaceShell({ children }: { children: React.ReactNode
   const [unreadCount, setUnreadCount] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    if (!isLoading && !user) {
-      router.push('/login');
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMounted && !isLoading) {
+      const hasStoredToken = typeof window !== 'undefined' && (
+        localStorage.getItem('app_web_token') || localStorage.getItem('pulse_web_token')
+      );
+      if (!user && !hasStoredToken) {
+        router.push('/login');
+      }
     }
-  }, [user, isLoading, router]);
+  }, [user, isLoading, isMounted, router]);
 
   useEffect(() => {
     if (user) {
@@ -44,11 +53,11 @@ export default function WorkspaceShell({ children }: { children: React.ReactNode
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  if (isLoading || !user) {
+  if (!isMounted || isLoading || !user) {
     return (
       <div className="min-h-screen bg-[#F7F5EF] flex flex-col items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#0A0A0A] animate-spin mb-3" />
-        <p className="text-sm font-medium text-[#687080]">Authenticating Pulse Command session...</p>
+        <p className="text-sm font-medium text-[#687080]">Authenticating SurvivalRun Runway session...</p>
       </div>
     );
   }
@@ -61,7 +70,7 @@ export default function WorkspaceShell({ children }: { children: React.ReactNode
         onClose={() => setSidebarOpen(false)}
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
-      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden relative z-10">
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         <Topbar
           unreadCount={unreadCount}
           onMenuClick={() => setSidebarOpen(true)}

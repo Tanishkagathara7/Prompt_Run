@@ -40,7 +40,7 @@ describe('1. Password Hashing & JWT Logic', () => {
   });
 
   test('JWT token signing and verification works correctly', () => {
-    const secret = process.env.JWT_SECRET || 'app_super_secret_jwt_key_hackathon_2026_9xqm';
+    const secret = process.env.JWT_SECRET || 'app_super_secret_jwt_key_domain_2026_9xqm';
     const payload = { id: 'user_123', email: 'jwt_test@example.com' };
     const token = jwt.sign(payload, secret, { expiresIn: '1h' });
 
@@ -51,7 +51,7 @@ describe('1. Password Hashing & JWT Logic', () => {
   });
 
   test('Invalid JWT token verification throws error', () => {
-    const secret = process.env.JWT_SECRET || 'app_super_secret_jwt_key_hackathon_2026_9xqm';
+    const secret = process.env.JWT_SECRET || 'app_super_secret_jwt_key_domain_2026_9xqm';
     assert.throws(() => {
       jwt.verify('invalid_tampered_token_string', secret);
     }, 'Tampered or malformed token should throw verification error');
@@ -144,62 +144,12 @@ describe('4. Google Login & Auth Sync Endpoint', () => {
   });
 });
 
-describe('5. Forgot Password & OTP Flow', () => {
-  test('POST /api/auth/forgot-password returns error for unregistered email', async () => {
-    try {
-      const nonExistentEmail = `unregistered_${Date.now()}@test.com`;
-      const res = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: nonExistentEmail }),
-      });
-
-      assert.strictEqual(res.status, 404, 'Unregistered email should return 404');
-      const data = await res.json();
-      assert.ok(data.error, 'Error message should exist for unregistered email');
-    } catch (err: any) {
-      console.warn(`[TEST NOTICE] Endpoint test skipped (server offline at ${API_BASE_URL})`);
-    }
-  });
-
-  test('POST /api/auth/reset-password validates password complexity requirements', async () => {
-    const weakPasswords = [
-      'short', // < 8 chars
-      'alllowercase1!', // no uppercase
-      'ALLUPPERCASE1!', // no lowercase
-      'NoNumberSpecial', // no numbers or special chars
-    ];
-
-    for (const weakPass of weakPasswords) {
-      try {
-        const res = await fetch(`${API_BASE_URL}/auth/reset-password`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: 'test@example.com',
-            otp: '123456',
-            newPassword: weakPass,
-          }),
-        });
-
-        assert.strictEqual(res.status, 400, `Weak password '${weakPass}' should fail validation`);
-        const data = await res.json();
-        assert.ok(data.error, 'Should return password validation error message');
-      } catch (err: any) {
-        console.warn(`[TEST NOTICE] Endpoint test skipped (server offline at ${API_BASE_URL})`);
-      }
-    }
-  });
-});
-
-describe('6. Rate Limiting & Security Headers', () => {
+describe('5. Rate Limiting & Security Headers', () => {
   test('Rate limit options and thresholds are correctly configured', () => {
     const generalMax = 100;
     const authMax = 10;
-    const otpMax = 5;
 
     assert.strictEqual(generalMax, 100, 'General API rate limiter should be capped at 100 requests per 15m');
     assert.strictEqual(authMax, 10, 'Auth route rate limiter should be capped at 10 requests per 15m');
-    assert.strictEqual(otpMax, 5, 'OTP route rate limiter should be capped at 5 requests per 15m');
   });
 });

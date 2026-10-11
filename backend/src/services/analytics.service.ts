@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { HackathonItem } from '../models/HackathonItem';
+import { DomainItem } from '../models/DomainItem';
 
 export interface OverviewMetrics {
   total: number;
@@ -43,7 +43,7 @@ export class AnalyticsService {
     const userObjectId = new mongoose.Types.ObjectId(userId);
 
     // 1. Status overview & total counts aggregation
-    const statusAgg = await HackathonItem.aggregate([
+    const statusAgg = await DomainItem.aggregate([
       { $match: { owner: userObjectId } },
       {
         $group: {
@@ -72,7 +72,7 @@ export class AnalyticsService {
     const completionRate = total > 0 ? Number(((completed / total) * 100).toFixed(2)) : 0;
 
     // 2. Category distribution aggregation
-    const categoryAgg = await HackathonItem.aggregate([
+    const categoryAgg = await DomainItem.aggregate([
       { $match: { owner: userObjectId } },
       {
         $group: {
@@ -93,7 +93,7 @@ export class AnalyticsService {
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
     thirtyDaysAgo.setHours(0, 0, 0, 0);
 
-    const activityAgg = await HackathonItem.aggregate([
+    const activityAgg = await DomainItem.aggregate([
       {
         $match: {
           owner: userObjectId,
@@ -117,7 +117,7 @@ export class AnalyticsService {
     }));
 
     // 4. Recent activity (top 5 recent items)
-    const recentItems = await HackathonItem.find({ owner: userObjectId })
+    const recentItems = await DomainItem.find({ owner: userObjectId })
       .sort({ createdAt: -1 })
       .limit(5)
       .select('title status category createdAt')

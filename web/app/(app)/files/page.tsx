@@ -49,9 +49,9 @@ export default function FilesPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Storage & Asset Manager</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Receipts & Proof Manager</h2>
         <p className="text-sm text-zinc-500">
-          Upload and organize documents, images, and attachments linked to your operational items.
+          Upload and organize bills, grocery invoices, and payment screenshots linked to your ₹10,000 monthly budget.
         </p>
       </div>
 

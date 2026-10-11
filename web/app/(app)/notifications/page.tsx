@@ -13,32 +13,7 @@ export default function NotificationsPage() {
   const [markingAll, setMarkingAll] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    let active = true;
-    const loadNotifications = async () => {
-      try {
-        const res = await notificationsApi.getNotifications(1, 30);
-        if (active) {
-          setNotifications(res.data || []);
-        }
-      } catch (err: unknown) {
-        if (active) {
-          const msg = err instanceof Error ? err.message : 'Failed to load notifications';
-          toast(msg, 'error');
-        }
-      } finally {
-        if (active) {
-          setLoading(false);
-        }
-      }
-    };
 
-    void loadNotifications();
-
-    return () => {
-      active = false;
-    };
-  }, [toast]);
 
   const handleMarkAllRead = async () => {
     setMarkingAll(true);

@@ -10,10 +10,10 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import { connectDatabase } from '../config/database';
 import { User } from '../models/User';
-import { HackathonItem } from '../models/HackathonItem';
+import { DomainItem } from '../models/DomainItem';
 import { checkSeedSafety } from '../seeds/seed.utils';
 import { seedDemoUser, DEMO_USER_EMAIL, DEMO_USER_RAW_PASSWORD } from '../seeds/users.seed';
-import { seedHackathonItems, resetDemoItems } from '../seeds/hackathonItems.seed';
+import { seedDomainItems, resetDemoItems } from '../seeds/domainItems.seed';
 import { genericDataset } from '../seeds/datasets/generic';
 
 describe('Database Seeding System Foundation Tests', () => {
@@ -35,7 +35,7 @@ describe('Database Seeding System Foundation Tests', () => {
       try {
         const demoUser = await User.findOne({ email: DEMO_USER_EMAIL.toLowerCase() });
         if (demoUser) {
-          await HackathonItem.deleteMany({ owner: demoUser._id });
+          await DomainItem.deleteMany({ owner: demoUser._id });
           await User.deleteOne({ _id: demoUser._id });
         }
       } catch {}
@@ -100,10 +100,10 @@ describe('Database Seeding System Foundation Tests', () => {
     const demoUser = await User.findOne({ email: DEMO_USER_EMAIL.toLowerCase() });
     assert.ok(demoUser, 'Demo user must exist');
 
-    const result = await seedHackathonItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
+    const result = await seedDomainItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
     assert.ok(result.totalDemoItems >= 30, 'Should seed at least 30 demo records');
 
-    const items = await HackathonItem.find({ owner: demoUser!._id });
+    const items = await DomainItem.find({ owner: demoUser!._id });
     assert.strictEqual(items.length, result.totalDemoItems);
     assert.ok(items.every((item) => item.isDemo === true), 'All seeded records must have isDemo: true');
     assert.ok(items.every((item) => item.owner.toString() === demoUser!._id.toString()), 'All seeded items must belong to demo user');
@@ -115,12 +115,12 @@ describe('Database Seeding System Foundation Tests', () => {
     const demoUser = await User.findOne({ email: DEMO_USER_EMAIL.toLowerCase() });
     assert.ok(demoUser);
 
-    const firstRun = await seedHackathonItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
-    const countAfterFirstRun = await HackathonItem.countDocuments({ owner: demoUser!._id, isDemo: true });
+    const firstRun = await seedDomainItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
+    const countAfterFirstRun = await DomainItem.countDocuments({ owner: demoUser!._id, isDemo: true });
 
     // Second run pass
-    const secondRun = await seedHackathonItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
-    const countAfterSecondRun = await HackathonItem.countDocuments({ owner: demoUser!._id, isDemo: true });
+    const secondRun = await seedDomainItems(genericDataset, demoUser!._id as mongoose.Types.ObjectId);
+    const countAfterSecondRun = await DomainItem.countDocuments({ owner: demoUser!._id, isDemo: true });
 
     assert.strictEqual(secondRun.createdCount, 0, 'Second run should create 0 new items');
     assert.strictEqual(secondRun.updatedCount, genericDataset.items.length, 'Second run should update existing items');
@@ -134,7 +134,7 @@ describe('Database Seeding System Foundation Tests', () => {
     assert.ok(demoUser);
 
     // Create a real (non-demo) item for demo user
-    const nonDemoItem = new HackathonItem({
+    const nonDemoItem = new DomainItem({
       title: 'Real User Created Item',
       description: 'This item was created by the user through UI',
       status: 'pending',
@@ -148,13 +148,13 @@ describe('Database Seeding System Foundation Tests', () => {
     const deletedCount = await resetDemoItems(demoUser!._id as mongoose.Types.ObjectId);
     assert.ok(deletedCount > 0, 'Reset should report deleted demo items');
 
-    const remainingDemoCount = await HackathonItem.countDocuments({ owner: demoUser!._id, isDemo: true });
+    const remainingDemoCount = await DomainItem.countDocuments({ owner: demoUser!._id, isDemo: true });
     assert.strictEqual(remainingDemoCount, 0, 'All isDemo: true records should be deleted');
 
-    const preservedItem = await HackathonItem.findById(nonDemoItem._id);
+    const preservedItem = await DomainItem.findById(nonDemoItem._id);
     assert.ok(preservedItem, 'Non-demo item must be preserved after reset');
 
     // Clean up test non-demo item
-    await HackathonItem.deleteOne({ _id: nonDemoItem._id });
+    await DomainItem.deleteOne({ _id: nonDemoItem._id });
   });
 });

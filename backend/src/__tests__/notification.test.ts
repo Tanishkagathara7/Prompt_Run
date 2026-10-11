@@ -10,11 +10,11 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 import { connectDatabase } from '../config/database';
 import { NotificationService } from '../services/notification.service';
 import { Notification } from '../models/Notification';
-import { HackathonItemService } from '../services/hackathonItem.service';
-import { HackathonItem } from '../models/HackathonItem';
+import { DomainItemService } from '../services/domainItem.service';
+import { DomainItem } from '../models/DomainItem';
 
 const API_BASE_URL = process.env.TEST_API_URL || 'http://localhost:5000/api';
-const JWT_SECRET = process.env.JWT_SECRET || 'app_super_secret_jwt_key_hackathon_2026_9xqm';
+const JWT_SECRET = process.env.JWT_SECRET || 'app_super_secret_jwt_key_domain_2026_9xqm';
 
 const USER_A_ID = new mongoose.Types.ObjectId().toString();
 const USER_B_ID = new mongoose.Types.ObjectId().toString();
@@ -78,7 +78,7 @@ describe('2. Notification Service & Event Trigger Integration Tests', () => {
     if (isDbConnected) {
       try {
         await Notification.deleteMany({ recipient: { $in: [USER_A_ID, USER_B_ID] } });
-        await HackathonItem.deleteMany({ owner: { $in: [USER_A_ID, USER_B_ID] } });
+        await DomainItem.deleteMany({ owner: { $in: [USER_A_ID, USER_B_ID] } });
       } catch {}
     }
   });
@@ -165,7 +165,7 @@ describe('2. Notification Service & Event Trigger Integration Tests', () => {
   test('9. Item-created notification event trigger integration', async () => {
     if (!isDbConnected) return;
 
-    const item = await HackathonItemService.create(
+    const item = await DomainItemService.create(
       { title: 'Notif Trigger Item', description: 'Testing creation event', status: 'pending' },
       USER_A_ID
     );
@@ -188,13 +188,13 @@ describe('2. Notification Service & Event Trigger Integration Tests', () => {
   test('10 & 11. Completed-status transition notification & duplicate prevention', async () => {
     if (!isDbConnected) return;
 
-    const item = await HackathonItemService.create(
+    const item = await DomainItemService.create(
       { title: 'Status Transition Test Item', status: 'in_progress' },
       USER_A_ID
     );
 
     // Initial status update to completed -> trigger notification
-    const updated1 = await HackathonItemService.update(item._id.toString(), USER_A_ID, { status: 'completed' });
+    const updated1 = await DomainItemService.update(item._id.toString(), USER_A_ID, { status: 'completed' });
     assert.strictEqual(updated1.status, 'completed');
 
     await NotificationService.createNotification({
@@ -239,7 +239,7 @@ describe('2. Notification Service & Event Trigger Integration Tests', () => {
     let createdItemId = '';
 
     try {
-      const item = await HackathonItemService.create(
+      const item = await DomainItemService.create(
         { title: 'Resilience Test Item', description: 'Primary action must succeed even if notification fails' },
         USER_A_ID
       );

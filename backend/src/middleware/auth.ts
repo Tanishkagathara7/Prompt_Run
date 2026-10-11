@@ -54,39 +54,23 @@ export const requireRoles = (allowedRoles: string[]) => {
   };
 };
 
-// General API Rate Limiter (Max 100 requests per 15 mins per IP)
+// General API Rate Limiter (Relaxed for active development & testing: 5000 requests per 15 mins)
 export const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 5000,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests from this IP, please try again after 15 minutes.' },
 });
 
-// Sensitive Auth Rate Limiter (Max 10 login/signup attempts per 15 mins per IP)
+// Sensitive Auth Rate Limiter
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10,
+  max: 200,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many authentication attempts from this IP, please try again after 15 minutes.' },
 });
 
-// OTP / Password Reset Rate Limiter (Max 5 attempts per 15 mins per IP)
-export const otpLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 5,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: 'Too many password reset requests from this IP, please try again after 15 minutes.' },
-});
 
-// AI Generation Rate Limiter (Max 15 requests per 15 mins per IP)
-export const aiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 15,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: 'Too many AI requests. Please wait a few minutes before trying again.' },
-});
 

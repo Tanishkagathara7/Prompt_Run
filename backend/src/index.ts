@@ -6,11 +6,10 @@ import path from 'path';
 import helmet from 'helmet';
 
 import { connectDatabase } from './config/database';
-import { generalLimiter, requireAuth, authLimiter, otpLimiter, AuthenticatedRequest } from './middleware/auth';
+import { generalLimiter, requireAuth, authLimiter, AuthenticatedRequest } from './middleware/auth';
 import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth.routes';
-import hackathonItemRoutes from './routes/hackathonItem.routes';
-import aiRoutes from './routes/ai.routes';
+import DomainItemRoutes from './routes/domainItem.routes';
 import fileRoutes from './routes/file.routes';
 import analyticsRoutes from './routes/analytics.routes';
 import notificationRoutes from './routes/notification.routes';
@@ -23,7 +22,7 @@ app.set('trust proxy', 1);
 const PORT = process.env.PORT || 5000;
 
 // Re-export middleware & types for backward compatibility
-export { requireAuth, generalLimiter, authLimiter, otpLimiter, AuthenticatedRequest };
+export { requireAuth, generalLimiter, authLimiter, AuthenticatedRequest };
 
 // Validate critical environment variables
 if (!process.env.MONGODB_URI) {
@@ -58,8 +57,7 @@ app.get('/api/health', (req: Request, res: Response) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/items', hackathonItemRoutes);
-app.use('/api/ai', aiRoutes);
+app.use('/api/items', DomainItemRoutes);
 app.use('/api/files', fileRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/notifications', notificationRoutes);

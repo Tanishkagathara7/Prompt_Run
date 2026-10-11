@@ -96,7 +96,7 @@ export const InteractiveGridTiles: React.FC<InteractiveGridTilesProps> = ({
       }
       ctx.stroke();
 
-      // Interactive cursor tile reaction with Code-A-Thon Neon/Electric Magenta & Cyan-Violet vibe
+      // Interactive cursor tile reaction with Neon/Electric Magenta & Cyan-Violet vibe
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const tileX = c * tileSize;
@@ -112,7 +112,7 @@ export const InteractiveGridTiles: React.FC<InteractiveGridTilesProps> = ({
             const factor = 1 - dist / mouse.radius;
             const easedFactor = Math.pow(factor, 2);
 
-            // Angle from mouse center gives a gradient hue cycle between Code-A-Thon Electric Pink/Magenta and Cyber Blue
+            // Angle from mouse center gives a gradient hue cycle between Electric Pink/Magenta and Cyber Blue
             const angle = Math.atan2(dy, dx);
             // Interpolate color: Pink/Crimson (#E11D48 / #EC4899) to Electric Cyan/Violet (#0284C7 / #8B5CF6)
             const isMagentaSide = Math.sin(angle) > 0;
@@ -146,7 +146,7 @@ export const InteractiveGridTiles: React.FC<InteractiveGridTilesProps> = ({
         }
       }
 
-      // Cursor dual-chromatic ambient radial glow matching Code-A-Thon lighting
+      // Cursor dual-chromatic ambient radial glow matching app lighting theme
       if (mouse.x > 0 && mouse.y > 0) {
         const radialGradient = ctx.createRadialGradient(
           mouse.x,
@@ -156,7 +156,7 @@ export const InteractiveGridTiles: React.FC<InteractiveGridTilesProps> = ({
           mouse.y,
           mouse.radius
         );
-        // Vibrant Code-A-Thon center aura (electric magenta fading to cyber blue)
+        // Vibrant app center aura (electric magenta fading to cyber blue)
         radialGradient.addColorStop(0, 'rgba(236, 72, 153, 0.09)');
         radialGradient.addColorStop(0.45, 'rgba(124, 58, 237, 0.05)');
         radialGradient.addColorStop(0.85, 'rgba(14, 165, 233, 0.03)');

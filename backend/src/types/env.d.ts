@@ -6,33 +6,8 @@ declare const process: {
     PORT?: string;
     MONGODB_URI?: string;
     JWT_SECRET?: string;
-    SMTP_USER?: string;
-    SMTP_PASS?: string;
-    SMTP_FROM?: string;
   };
 };
-
-declare module 'nodemailer' {
-  export interface SendMailOptions {
-    from?: string;
-    to?: string;
-    subject?: string;
-    text?: string;
-    html?: string;
-    [key: string]: any;
-  }
-
-  export interface Transporter {
-    sendMail(options: SendMailOptions): Promise<{ messageId: string; [key: string]: any }>;
-  }
-
-  export function createTransport(config: any): Transporter;
-  
-  const nodemailer: {
-    createTransport(config: any): Transporter;
-  };
-  export default nodemailer;
-}
 
 declare module 'bcryptjs' {
   export function hash(s: string, salt: number | string): Promise<string>;

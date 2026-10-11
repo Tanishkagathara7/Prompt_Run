@@ -10,7 +10,7 @@ export const getBaseUrl = (): string => {
     return process.env.NEXT_PUBLIC_API_URL;
   }
   return process.env.NODE_ENV === 'production'
-    ? 'https://code-a-thon-9xqm.onrender.com/api'
+    ? process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
     : 'http://localhost:5000/api';
 };
 

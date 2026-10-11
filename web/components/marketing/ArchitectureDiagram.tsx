@@ -17,15 +17,15 @@ export const ArchitectureDiagram: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState<string>('backend');
 
   const nodes: Record<string, ArchNode> = {
-    mobile: {
-      id: 'mobile',
-      name: 'React Native Expo Client',
-      role: 'GESTURE & NATIVE CLIENT',
+    web: {
+      id: 'web',
+      name: 'Next.js 16 Web Workspace',
+      role: 'DESKTOP OPERATIONAL CENTER',
       badge: 'NODE 01',
       accentBg: 'from-blue-500/10 to-transparent',
       badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-      tech: ['Expo SDK 57', 'Expo Router', 'Reanimated 4.5.1', 'expo-secure-store'],
-      specs: 'Compiled for iOS and Android. Manages cryptographic JWT bearer tokens in SecureStore, handling native gestures and offline caching.',
+      tech: ['Next.js App Router', 'React 19', 'Tailwind CSS', 'Lenis Smooth Motion', 'AuthContext'],
+      specs: 'High-density desktop operational workspace. Direct client-side token interception, responsive grid views, and batch asset uploads.',
     },
     backend: {
       id: 'backend',
@@ -34,18 +34,18 @@ export const ArchitectureDiagram: React.FC = () => {
       badge: 'CORE ENGINE',
       accentBg: 'from-emerald-500/10 to-transparent',
       badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      tech: ['Express.js', 'Mongoose ODM', 'JWT Auth', 'Multer Storage', 'OpenRouter Gateway'],
+      tech: ['Express.js', 'Mongoose ODM', 'JWT Auth', 'Multer Storage', 'RBAC Middleware'],
       specs: 'Central REST router running on port 5000. Provides Helmet security headers, rate limiting, and atomic transaction handling.',
     },
-    web: {
-      id: 'web',
-      name: 'Next.js 14 Web Workspace',
-      role: 'DESKTOP OPERATIONAL CENTER',
-      badge: 'NODE 02',
+    analytics: {
+      id: 'analytics',
+      name: 'Telemetry & Analytics Pipeline',
+      role: 'REAL-TIME DATA AGGREGATION',
+      badge: 'METRICS ENGINE',
       accentBg: 'from-amber-500/10 to-transparent',
       badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
-      tech: ['Next.js App Router', 'React 19', 'Tailwind CSS', 'Lenis Smooth Motion', 'AuthContext'],
-      specs: 'High-density desktop operational workspace. Direct client-side token interception, responsive grid views, and batch asset uploads.',
+      tech: ['Aggregation Pipelines', 'Activity Telemetry', 'Resolution Rates', 'Category Triage'],
+      specs: 'Real-time telemetry and aggregation layer computing workspace runway metrics, expense settlement status, and category velocity.',
     },
     database: {
       id: 'database',
@@ -68,10 +68,10 @@ export const ArchitectureDiagram: React.FC = () => {
           {'// 08. TOPOLOGY & DATA BUS'}
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-          CENTRAL ENGINE & EDGE TOPOLOGY
+          CENTRAL ENGINE & WEB TOPOLOGY
         </h2>
         <p className="text-sm text-zinc-600">
-          One authoritative REST architecture powers both client applications without code duplication or state divergence.
+          Authoritative REST architecture powering the web workspace with zero state divergence.
         </p>
       </div>
 

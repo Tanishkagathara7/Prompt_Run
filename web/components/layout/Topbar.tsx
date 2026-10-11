@@ -20,24 +20,24 @@ export const Topbar: React.FC<TopbarProps> = ({
   const pathname = usePathname();
 
   const getBreadcrumb = () => {
-    if (pathname.startsWith('/dashboard')) return { title: 'Command Center', section: 'Operations' };
-    if (pathname.startsWith('/items/new')) return { title: `Log ${domainConfig.domain.primaryEntityName}`, section: 'Incident Hub' };
-    if (pathname.startsWith('/items')) return { title: `${domainConfig.domain.entityPluralName} Triage`, section: 'Incident Hub' };
-    if (pathname.startsWith('/ai-assistant')) return { title: 'Pulse AI Copilot', section: 'Intelligence' };
-    if (pathname.startsWith('/files')) return { title: 'Assets & Evidence', section: 'Files & Media' };
-    if (pathname.startsWith('/notifications')) return { title: 'Operational Alerts', section: 'Feed' };
+    if (pathname.startsWith('/dashboard')) return { title: 'Runway Command', section: 'Finance' };
+    if (pathname.startsWith('/ledger')) return { title: 'Expense Ledger', section: 'Cash Flow' };
+    if (pathname.startsWith('/items/new')) return { title: 'Log Expense', section: 'Ledger' };
+    if (pathname.startsWith('/items')) return { title: 'Records Archive', section: 'Database' };
+    if (pathname.startsWith('/files')) return { title: 'Receipts & Proof', section: 'Media' };
+    if (pathname.startsWith('/notifications')) return { title: 'Burn Alerts', section: 'Notifications' };
     return { title: 'Workspace', section: 'System' };
   };
 
   const breadcrumb = getBreadcrumb();
 
   return (
-    <header className="h-16 bg-white border-b border-[#E6E9F0] px-6 flex items-center justify-between sticky top-0 z-30 select-none">
-      <div className="flex items-center gap-3 min-w-0">
+    <header className="h-16 bg-white border-b border-[#E6E9F0] px-3 sm:px-6 flex items-center justify-between sticky top-0 z-30 select-none">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         {/* Mobile Hamburger Button */}
         <button
           onClick={onMenuClick}
-          className="lg:hidden p-2 rounded-xl text-[#68728A] hover:text-[#101226] hover:bg-[#F8F9FC] transition-colors cursor-pointer"
+          className="lg:hidden p-2 -ml-1 rounded-xl text-[#68728A] hover:text-[#101226] hover:bg-[#F8F9FC] transition-colors cursor-pointer shrink-0"
           aria-label="Open workspace navigation"
         >
           <Menu className="w-5 h-5" />
@@ -45,10 +45,10 @@ export const Topbar: React.FC<TopbarProps> = ({
 
         {/* Operational Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs">
-          <span className="font-medium text-[#68728A]">Operations</span>
+          <span className="font-medium text-[#68728A]">{breadcrumb.section}</span>
           <span className="text-[#68728A]">/</span>
           <h1 className="font-bold text-[#101226] text-sm tracking-tight">
-            Command Center
+            {breadcrumb.title}
           </h1>
         </div>
       </div>
@@ -61,7 +61,7 @@ export const Topbar: React.FC<TopbarProps> = ({
         >
           <div className="flex items-center gap-2.5">
             <Search className="w-4 h-4 text-[#68728A]" />
-            <span className="truncate text-xs">Search incidents, services, commands...</span>
+            <span className="truncate text-xs">Search expenses, commitments, commands...</span>
           </div>
           <div className="flex items-center font-mono text-[10px] text-[#68728A] bg-white px-1.5 py-0.5 rounded border border-[#E6E9F0]">
             <span>Ctrl K</span>
@@ -69,7 +69,7 @@ export const Topbar: React.FC<TopbarProps> = ({
         </button>
       </div>
 
-      <div className="flex items-center gap-3 shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
         {/* Mobile Search Button */}
         <button
           onClick={onOpenCommandPalette}
@@ -82,14 +82,14 @@ export const Topbar: React.FC<TopbarProps> = ({
         {/* Live System Connectivity Chip */}
         <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F0FDF4] border border-[#DCFCE7] text-[11px] font-bold text-[#16B981]">
           <span className="w-2 h-2 rounded-full bg-[#16B981]" />
-          <span className="font-mono text-[10px]">SYS_ONLINE</span>
+          <span className="font-mono text-[10px]">RUNWAY_ACTIVE</span>
         </div>
 
         {/* Notification Bell */}
         <Link
           href="/notifications"
           className="relative p-2 rounded-xl text-[#68728A] hover:text-[#101226] hover:bg-[#F8F9FC] transition-colors"
-          title="Incident Alerts"
+          title="Budget Alerts"
         >
           <Bell className="w-4 h-4" />
           {unreadCount > 0 && (
@@ -97,13 +97,14 @@ export const Topbar: React.FC<TopbarProps> = ({
           )}
         </Link>
 
-        {/* New Incident Primary Action */}
+        {/* New Expense Primary Action */}
         <Link
-          href="/items/new"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#101226] hover:bg-[#1f2445] text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
+          href="/ledger"
+          className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-[#101226] hover:bg-[#1f2445] text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
         >
           <Plus className="w-3.5 h-3.5" />
-          <span>New Incident</span>
+          <span className="hidden xs:inline sm:inline">Log Expense</span>
+          <span className="inline xs:hidden sm:hidden">Log</span>
         </Link>
       </div>
     </header>

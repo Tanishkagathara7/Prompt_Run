@@ -7,7 +7,9 @@ export const errorHandler = (err: any, req: Request, res: Response, next: NextFu
   const isProduction = process.env.NODE_ENV === 'production';
 
   let safeMessage = err.message || 'Internal server error';
-  if (isProduction && statusCode === 500) {
+  if (err.name === 'MongooseError' || (typeof err.message === 'string' && err.message.includes('buffering timed out'))) {
+    safeMessage = 'Database service is temporarily unreachable or connecting. Please check your network connection and try again.';
+  } else if (isProduction && statusCode === 500) {
     safeMessage = 'An internal server error occurred. Please try again later.';
   }
 

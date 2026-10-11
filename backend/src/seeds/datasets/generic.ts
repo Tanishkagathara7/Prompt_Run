@@ -2,7 +2,7 @@ import { SeedDataset } from './types';
 
 export const genericDataset: SeedDataset = {
   name: 'generic',
-  description: 'A comprehensive generic hackathon dataset with realistic community, tech, civic, and education items.',
+  description: 'A comprehensive generic domain dataset with realistic community, tech, civic, and education items.',
   items: [
     {
       seedKey: 'generic-001',

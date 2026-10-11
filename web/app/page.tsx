@@ -25,8 +25,6 @@ import { createHeroEntranceTimeline } from '@/lib/animations/hero';
 import { initScrollStory } from '@/lib/animations/scroll';
 import { initHeroTypographyAnimation } from '@/lib/animations/heroTypography';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { JsonLd } from '@/components/seo/JsonLd';
-import { SITE_CONFIG, getSiteUrl } from '@/lib/seo';
 import { domainConfig } from '@/lib/domain.config';
 import { EditorialBackgroundSystem } from '@/components/background/EditorialBackgroundSystem';
 import { LoadingScreen } from '@/components/loading/LoadingScreen';
@@ -35,98 +33,7 @@ import { TiltCard } from '@/components/ui/TiltCard';
 
 export default function MarketingPage() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const siteUrl = getSiteUrl();
 
-  // Valid Schema.org structured data declarations
-  const jsonLdSchemas = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: SITE_CONFIG.name,
-      alternateName: SITE_CONFIG.fullName,
-      url: siteUrl,
-      description: SITE_CONFIG.shortDescription,
-      inLanguage: 'en-US',
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: SITE_CONFIG.name,
-      url: siteUrl,
-      logo: `${siteUrl}/icon.png`,
-      description: SITE_CONFIG.shortDescription,
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: SITE_CONFIG.name,
-      operatingSystem: 'Web, iOS, Android',
-      applicationCategory: 'BusinessApplication, DeveloperApplication',
-      description: SITE_CONFIG.fullDescription,
-      offers: {
-        '@type': 'Offer',
-        price: '0.00',
-        priceCurrency: 'USD',
-      },
-      featureList: [
-        'Real-time state synchronization between Next.js and React Native',
-        'OpenRouter AI Gateway task synthesis and categorization',
-        'Cryptographic JWT Bearer token authentication and SecureStore integration',
-        'Offline-first mobile agility with React Native Expo SDK 57',
-        'High-density operational dashboard and domain items CRUD pipeline',
-      ],
-      author: {
-        '@type': 'Organization',
-        name: SITE_CONFIG.author,
-      },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How is state synchronized between Next.js and React Native?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Both clients consume a unified Node.js / Express REST API backed by MongoDB Atlas. Authentication is maintained via cryptographically verified JWT tokens (stored in secure browser storage for web, and expo-secure-store for native mobile). Cache invalidation triggers immediate re-fetches for consistent operational metrics across both platforms.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What AI gateway capabilities are natively integrated?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'The shared backend incorporates OpenRouter AI Gateway integration. It executes structured entity summarization, priority classification, and action plan generation across your operations items with strict rate-limiting and token usage tracking.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can this architecture pivot to new hackathon problem statements?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. The core data model is designed around extensible domain entities, automated file storage (via Multer), notification routing, and dynamic analytics. New domain attributes can be mapped in the shared contracts without altering the base cross-platform plumbing.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Does the mobile application support native offline-first workflows?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes. The React Native Expo mobile client utilizes Reanimated 4.5.1 gesture handling, persistent secure credentials, local caching, and automated network detection to provide seamless mobile agility in spotty network environments.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is the web application production-ready and accessible?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'The web client is built on Next.js App Router with strict WCAG AA contrast ratios, keyboard navigation, full semantic HTML5 elements, and dynamic client-side rendering with motion fallbacks for users preferring reduced motion.',
-          },
-        },
-      ],
-    },
-  ];
 
   const { isLoading } = useLoading();
   const heroCtxRef = useRef<gsap.Context | null>(null);
@@ -183,9 +90,6 @@ export default function MarketingPage() {
       >
         {/* Full-Page Editorial Decorative SVG Background System */}
         <EditorialBackgroundSystem />
-
-        {/* Schema.org Structured Data */}
-        <JsonLd data={jsonLdSchemas} />
 
         <MarketingNav />
 
@@ -319,10 +223,10 @@ export default function MarketingPage() {
                     </span>
                   </span>
 
-                  {/* Mobile. */}
+                  {/* Web. */}
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="mobile"
+                    data-word="web"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
@@ -331,7 +235,7 @@ export default function MarketingPage() {
                       style={{ backgroundColor: '#10B981' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Mobile
+                      Web
                     </span>
                   </span>
                 </div>
@@ -355,7 +259,7 @@ export default function MarketingPage() {
                 </Link>
                 <Link
                   href="#product"
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent) => {
                     e.preventDefault();
                     const el = document.getElementById('product');
                     if (el) {
@@ -405,22 +309,22 @@ export default function MarketingPage() {
               </span>
             </h2>
             <p className="philosophy-body text-base sm:text-xl text-zinc-600 leading-relaxed max-w-3xl font-normal">
-              We rejected the compromise of single-codebase wrappers. Desktop operations demand data density, keyboard efficiency, and batch processing. Mobile operations demand biometric gestures and zero-latency caching. APP gives both clients direct access to an authoritative central engine.
+              We focus on delivering an uncompromising, high-density web operational center. Desktop and browser operations demand data density, keyboard efficiency, batch processing, and instantaneous cache synchronization with the authoritative central engine.
             </p>
           </div>
         </section>
 
         {/* ========================================================
-            03. PRODUCT EXPERIENCE: BENTO GRID CLIENT PARITY
+            03. PRODUCT EXPERIENCE: BENTO GRID CAPABILITIES
            ======================================================== */}
         <section id="platform" className="section-parity py-12 sm:py-16 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="parity-header max-w-3xl space-y-2">
               <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
-                {'// 03. CLIENT PURPOSE & PARITY'}
+                {'// 03. ARCHITECTURAL CAPABILITIES'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                Two Dedicated Clients. One Core API.
+                Engineered for Dense Workflows & Real-Time Performance
               </h2>
             </div>
 
@@ -433,7 +337,7 @@ export default function MarketingPage() {
                     <Monitor className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                    Next.js 14 Desktop Center
+                    Next.js 16 Operational Center
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
                     Designed for heavy operational density. Filter hundreds of domain items, manage multi-megabyte file uploads via Multer, run batch updates, and inspect full telemetry dashboards.
@@ -455,31 +359,31 @@ export default function MarketingPage() {
                 </div>
               </div>
 
-              {/* Mobile Client Bento Card */}
+              {/* Express REST & AI Engine Bento Card */}
               <div className="parity-card lg:col-span-6 bento-card p-8 flex flex-col justify-between space-y-6 bg-white/80 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="space-y-4">
                   <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200/60 shadow-sm">
-                    <Smartphone className="w-6 h-6" />
+                    <Sparkles className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                    React Native Expo Mobile
+                    Express REST & MongoDB Atlas
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
-                    Built for gesture-native speed on iOS and Android. Incorporates biometric authorization, fluid Reanimated 4.5.1 interactions, secure persistent credential storage, and instant cache updates.
+                    Built for resilient throughput and atomic mutations. Incorporates Mongoose models, strict rate limiting, Helmet security, and enterprise data integrity.
                   </p>
                 </div>
                 <div className="pt-6 border-t border-black/[0.06] space-y-2.5 text-xs font-medium text-zinc-700">
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Expo Router v57 File System Navigation</span>
+                    <span>Mongoose Schema Validations & Indexing</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>expo-secure-store Cryptographic Credentials</span>
+                    <span>Role-Based Access Control & Rate Limiting</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Offline-First State & Network Recovery</span>
+                    <span>Sub-40ms Atomic State Mutations</span>
                   </div>
                 </div>
               </div>
@@ -497,10 +401,10 @@ export default function MarketingPage() {
                 {'// 04. SYNCHRONIZATION CORRIDOR'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                One Backend. Two Clients. Zero Drift.
+                One Core Backend. Zero State Drift.
               </h2>
               <p className="text-sm text-zinc-600 leading-relaxed">
-                Watch desktop state changes synchronize with mobile native clients in under 35ms through atomic Mongoose mutations.
+                Watch operational state changes synchronize with MongoDB Atlas and telemetry feeds in under 35ms through atomic Mongoose mutations.
               </p>
             </div>
 
@@ -509,7 +413,7 @@ export default function MarketingPage() {
               {/* Desktop Dispatch Preview */}
               <div className="sync-desktop-card md:col-span-7 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>CLIENT A: DESKTOP DISPATCH</span>
+                  <span>WORKSPACE DISPATCH</span>
                   <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">Port 3000</span>
                 </div>
                 <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
@@ -519,16 +423,16 @@ export default function MarketingPage() {
                 </div>
               </div>
 
-              {/* Mobile Sync Preview */}
+              {/* Database Telemetry Preview */}
               <div className="sync-mobile-card md:col-span-5 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>CLIENT B: MOBILE SYNC</span>
-                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Expo 57</span>
+                  <span>DATABASE PERSISTENCE</span>
+                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">MongoDB Atlas</span>
                 </div>
                 <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
                   <div className="text-zinc-500">{'// Revalidated via cache invalidation'}</div>
                   <div className="font-semibold">onItemCacheInvalidate(&apos;66f1...&apos;)</div>
-                  <div className="text-emerald-600 font-semibold">✓ Native list updated in &lt; 35ms</div>
+                  <div className="text-emerald-600 font-semibold">✓ Dashboard updated in &lt; 25ms</div>
                 </div>
               </div>
             </div>
@@ -554,44 +458,44 @@ export default function MarketingPage() {
         </section>
 
         {/* ========================================================
-            06. REAL ASSET: CODE-A-THON HERITAGE
+            06. REAL ASSET: ENGINEERING FOUNDATION
            ======================================================== */}
-        <section id="heritage" className="codeathon-section py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
+        <section id="heritage" className="engineering-section py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="codeathon-copy-col lg:col-span-5 space-y-6 flex flex-col justify-center">
+            <div className="engineering-copy-col lg:col-span-5 space-y-6 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-full text-xs font-semibold shadow-sm w-fit">
                 <Code2 className="w-4 h-4 text-amber-600" />
-                <span>CODE-A-THON HERITAGE</span>
+                <span>ENGINEERING FOUNDATION</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 leading-tight">
-                Born Under Hackathon Pressure.
+                Built for Production Speed.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
-                APP was conceived and built to solve a concrete engineering challenge: how to architect a production-ready, cross-platform system at breakneck speed without introducing architectural drift or sacrificing mobile security.
+                APP was engineered to solve a concrete challenge: how to architect a production-ready web system at speed without introducing architectural drift or sacrificing security.
               </p>
               <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
                 Engineered with strict API contracts, end-to-end type safety, atomic state synchronization, and biometric persistence built into the core baseline from day one.
               </p>
               <div className="space-y-3 font-mono text-xs font-semibold text-zinc-800 pt-1">
                 <div className="p-3.5 rounded-xl bg-white/80 backdrop-blur-sm border border-black/[0.06] flex items-center justify-between">
-                  <span>ARCHITECTURAL PARITY</span>
+                  <span>ARCHITECTURAL INTEGRITY</span>
                   <span className="bg-zinc-900 text-white px-2.5 py-0.5 rounded text-xs">100% VERIFIED</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/80 backdrop-blur-sm border border-black/[0.06] flex items-center justify-between">
-                  <span>MOBILE RUNTIME</span>
-                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded text-xs">EXPO 57 SAFE</span>
+                  <span>WEB RUNTIME</span>
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded text-xs">NEXT.JS 16 SAFE</span>
                 </div>
               </div>
             </div>
 
-            {/* Real Code-A-Thon Asset Frame */}
+            {/* Architecture Diagram Frame */}
             <div className="lg:col-span-7 relative">
               <TiltCard maxTilt={14} perspective={1200} className="w-full">
-                <div className="codeathon-visual-frame bento-card p-4 sm:p-6 shadow-xl bg-white/90 backdrop-blur-md transition-all duration-300 hover:shadow-2xl">
+                <div className="engineering-visual-frame bento-card p-4 sm:p-6 shadow-xl bg-white/90 backdrop-blur-md transition-all duration-300 hover:shadow-2xl">
                   <div className="relative aspect-[2083/755] w-full rounded-xl bg-zinc-50/70 p-2 overflow-hidden border border-black/[0.06]">
                     <Image
                       src="/code.png"
-                      alt="APP multi-platform engineering architecture diagram illustrating Next.js, React Native Expo, and Express REST integration"
+                      alt="APP web engineering architecture diagram illustrating Next.js, Express REST, and MongoDB Atlas integration"
                       fill
                       sizes="(max-width: 768px) 100vw, 700px"
                       className="object-contain p-2"
@@ -603,7 +507,7 @@ export default function MarketingPage() {
                       <span className="w-2 h-2 rounded-full bg-blue-600" />
                       Official Architecture Artifact
                     </span>
-                    <span className="text-zinc-500 font-mono text-xs">Next.js + Expo Shared Core</span>
+                    <span className="text-zinc-500 font-mono text-xs">Next.js + Express Core</span>
                   </div>
                 </div>
               </TiltCard>
@@ -648,7 +552,7 @@ export default function MarketingPage() {
                 <Highlight variant="green">Delivered for Speed.</Highlight>
               </h2>
               <p className="text-base text-zinc-600 leading-relaxed italic font-normal">
-                &ldquo;A great cross-platform product is not a single codebase stretched across two form factors. It is an authoritative backend and shared data contract powering two unapologetically native client experiences.&rdquo;
+                &ldquo;A great engineering product is built upon an authoritative backend and strong data contracts powering a responsive, high-density web workspace.&rdquo;
               </p>
               <div className="flex items-center gap-4 pt-2 text-xs font-medium">
                 <div className="p-3.5 rounded-xl bg-white/85 border border-black/[0.06] shadow-sm backdrop-blur-sm">
@@ -657,7 +561,7 @@ export default function MarketingPage() {
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/85 border border-black/[0.06] shadow-sm backdrop-blur-sm">
                   <span className="text-zinc-400 block text-xs font-mono">APPLICATION</span>
-                  <span className="text-zinc-900 font-semibold">APP Multi-Platform Core</span>
+                  <span className="text-zinc-900 font-semibold">APP Web Operational Core</span>
                 </div>
               </div>
             </div>
@@ -706,12 +610,12 @@ export default function MarketingPage() {
                 Built once.
               </span>
               <span className="cta-headline-line block overflow-hidden mt-1">
-                Designed for <Highlight variant="blue">everywhere.</Highlight>
+                Designed for <Highlight variant="blue">performance.</Highlight>
               </span>
             </h2>
 
             <p className="cta-subhead max-w-xl text-base text-zinc-600 leading-relaxed font-normal">
-              Launch the Next.js desktop operations center or connect via native mobile credentials to experience synchronized real-time workflows.
+              Launch the Next.js desktop operations center to experience synchronized real-time workflows and AI copilot integration.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">

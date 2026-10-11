@@ -7,14 +7,13 @@ import {
   ArrowLeft,
   Edit,
   Trash2,
-  Sparkles,
   CheckCircle2,
   Clock,
   AlertCircle,
   Loader2,
 } from 'lucide-react';
-import { itemsApi, aiApi } from '@/lib/api/domain';
-import { HackathonItem } from '@/lib/types';
+import { itemsApi } from '@/lib/api/domain';
+import { DomainItem } from '@/lib/types';
 import { getStatusBadgeStyle, formatDate } from '@/lib/utils';
 import { useToast } from '@/lib/context/ToastContext';
 import { domainConfig } from '@/lib/domain.config';
@@ -25,12 +24,9 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
   const router = useRouter();
   const { toast } = useToast();
 
-  const [item, setItem] = useState<HackathonItem | null>(null);
+  const [item, setItem] = useState<DomainItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [updatingStatus, setUpdatingStatus] = useState(false);
-  const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
-  const [analyzing, setAnalyzing] = useState(false);
-
   useEffect(() => {
     let active = true;
     const fetchItem = async () => {
@@ -82,26 +78,6 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Failed to delete item';
       toast(msg, 'error');
-    }
-  };
-
-  const handleAiDeepDive = async () => {
-    if (!item) return;
-    setAnalyzing(true);
-    try {
-      const res = await aiApi.generate({
-        prompt: `Analyze this item and give a risk evaluation and 3 key milestones for completion:\nTitle: ${item.title}\nCategory: ${item.category}\nCurrent Status: ${item.status}\nDetails: ${item.description || 'No description'}`,
-        system: 'You are an elite agile operations analyst. Provide a sharp, executive-ready breakdown.',
-      });
-      if (res.data?.text) {
-        setAiAnalysis(res.data.text);
-        toast('AI Intelligence Analysis generated', 'success');
-      }
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'AI analysis failed';
-      toast(msg, 'error');
-    } finally {
-      setAnalyzing(false);
     }
   };
 
@@ -186,28 +162,6 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
               </div>
             </div>
 
-            {/* AI Assistant Action */}
-            <div className="pt-6 border-t border-zinc-100">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold text-indigo-700">
-                  <Sparkles className="w-4 h-4 text-indigo-600" />
-                  <span>AI Copilot Analysis</span>
-                </div>
-                <button
-                  onClick={handleAiDeepDive}
-                  disabled={analyzing}
-                  className="px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50"
-                >
-                  {analyzing ? 'Analyzing with OpenRouter...' : 'Generate AI Risk & Milestones'}
-                </button>
-              </div>
-
-              {aiAnalysis && (
-                <div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-indigo-50/70 to-zinc-50 border border-indigo-100 text-xs text-zinc-800 whitespace-pre-wrap leading-relaxed">
-                  {aiAnalysis}
-                </div>
-              )}
-            </div>
           </div>
         </div>
 

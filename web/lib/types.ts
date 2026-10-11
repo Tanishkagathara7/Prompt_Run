@@ -12,7 +12,7 @@ export interface User {
 
 export type ItemStatus = 'pending' | 'in_progress' | 'completed' | string;
 
-export interface HackathonItem {
+export interface DomainItem {
   id?: string;
   _id?: string;
   title: string;

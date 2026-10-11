@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
  * - 03: Client Purpose & Parity (Staggered bento card entrance with micro-offsets)
  * - 04: Synchronization Corridor (Bilateral docking of Desktop & Mobile cards)
  * - 05: Operational Workflow Demo (Interactive panel entrance & telemetry scan)
- * - 06: Hackathon Heritage (Masked diagram reveal with restrained scale transition)
+ * - 06: Engineering Foundation (Masked diagram reveal with restrained scale transition)
  * - 07: Creator / Engineer (Editorial framed portrait reveal + quote reveal)
  * - 08: Central Engine Topology (Bento node stagger + SVG line progressive draw)
  * - 09: Technical FAQ (Clean accordion container entrance)
@@ -255,10 +255,10 @@ export const initScrollStory = (rootContainer: HTMLElement | null) => {
     }
 
     // =========================================================================
-    // 06. REAL ASSET: CODE-A-THON HERITAGE (SECTION E)
+    // 06. REAL ASSET: ENGINEERING FOUNDATION (SECTION E)
     // Masked reveal of the official architecture diagram
     // =========================================================================
-    const sec06 = document.querySelector('.codeathon-section');
+    const sec06 = document.querySelector('.engineering-section');
     if (sec06) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -268,7 +268,7 @@ export const initScrollStory = (rootContainer: HTMLElement | null) => {
         },
       });
 
-      const copyCol = sec06.querySelector('.codeathon-copy-col');
+      const copyCol = sec06.querySelector('.engineering-copy-col');
       if (copyCol) {
         tl.fromTo(
           copyCol,
@@ -276,9 +276,9 @@ export const initScrollStory = (rootContainer: HTMLElement | null) => {
           { opacity: 1, y: 0, duration: 0.65, ease: MOTION.ease.smooth }
         );
       }
-      if (document.querySelector('.codeathon-visual-frame')) {
+      if (document.querySelector('.engineering-visual-frame')) {
         tl.fromTo(
-          '.codeathon-visual-frame',
+          '.engineering-visual-frame',
           { opacity: 0, y: 30, scale: 0.97 },
           {
             opacity: 1,

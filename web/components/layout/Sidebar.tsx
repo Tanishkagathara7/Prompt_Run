@@ -6,9 +6,7 @@ import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Layers,
-  Sparkles,
   FolderOpen,
-  Activity,
   Bell,
   ChevronsLeft,
   ChevronsRight,
@@ -27,7 +25,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  unreadNotifications = 2,
+  unreadNotifications = 0,
   isOpen = false,
   onClose,
   onOpenCommandPalette,
@@ -37,15 +35,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const [collapsed, setCollapsed] = useState(false);
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Incident Hub', href: '/items', icon: Layers },
-    { name: 'AI Copilot', href: '/ai-assistant', icon: Sparkles },
-    { name: 'Files & Media', href: '/files', icon: FolderOpen },
-    { name: 'Analytics', href: '/dashboard/analytics', icon: Activity },
-    { name: 'Notifications', href: '/notifications', icon: Bell, badge: unreadNotifications || 2 },
+    { name: 'Runway Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Expense Ledger', href: '/ledger', icon: Layers },
+    { name: 'Receipts & Files', href: '/files', icon: FolderOpen },
+    { name: 'Alerts', href: '/notifications', icon: Bell, badge: unreadNotifications > 0 ? unreadNotifications : undefined },
   ];
-
-  const userRole = user?.role || 'operator';
 
   return (
     <>
@@ -61,9 +55,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Sidebar Container */}
       <aside
         className={cn(
-          'bg-[#FAFCFF] border-r border-[#EEF2F6] flex flex-col justify-between h-screen fixed inset-y-0 left-0 z-50 transition-all duration-300 ease-in-out select-none lg:static lg:translate-x-0 relative overflow-hidden',
-          collapsed ? 'w-[72px]' : 'w-[270px]',
-          isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
+          'bg-[#FAFCFF] border-r border-[#EEF2F6] flex flex-col justify-between h-screen z-50 transition-all duration-300 ease-in-out select-none overflow-hidden',
+          // Desktop positioning
+          'lg:static lg:translate-x-0',
+          collapsed ? 'lg:w-[72px]' : 'lg:w-[270px]',
+          // Mobile positioning: fixed drawer when open, hidden offscreen otherwise
+          'max-lg:fixed max-lg:inset-y-0 max-lg:left-0 max-lg:w-[270px]',
+          isOpen
+            ? 'max-lg:translate-x-0 max-lg:shadow-2xl'
+            : 'max-lg:-translate-x-full max-lg:pointer-events-none'
         )}
       >
         {/* Scrollable Upper Area */}
@@ -107,16 +107,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
               {!collapsed && (
                 <div className="flex flex-col truncate">
                   <span className="font-extrabold text-[19px] tracking-tight text-[#161828] leading-none">
-                    Pulse
+                    SurvivalRun
                   </span>
                   <span className="text-[9px] font-bold tracking-[0.06em] text-[#8C95A6] mt-1 uppercase">
-                    COMMAND CENTER
+                    RUNWAY COMMAND
                   </span>
                 </div>
               )}
             </Link>
 
-            {/* Collapse toggle (only when expanded, in collapsed it appears below in clean bar or toggle) */}
+            {/* Collapse toggle */}
             {!collapsed && (
               <button
                 type="button"
@@ -198,8 +198,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <nav className={cn('space-y-2', collapsed ? 'px-3 pt-2' : 'px-4 pt-1')}>
             {navigation.map((item) => {
               const isActive =
-                item.name === 'Dashboard'
-                  ? pathname === '/dashboard' || pathname === '/'
+                item.href === '/dashboard'
+                  ? pathname === '/dashboard'
                   : pathname === item.href;
 
               const Icon = item.icon;
@@ -258,44 +258,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             })}
           </nav>
         </div>
-
-        {/* Ambient Decorative Graphic */}
-        {!collapsed && (
-          <div className="absolute inset-x-0 bottom-44 pointer-events-none select-none z-0 overflow-hidden h-[220px]">
-            <svg
-              className="absolute -left-12 bottom-0 w-80 h-80"
-              viewBox="0 0 300 300"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="90" cy="210" r="75" fill="#5C4CF6" fillOpacity="0.03" />
-              <circle cx="90" cy="210" r="115" stroke="#5C4CF6" strokeWidth="1.2" strokeOpacity="0.14" />
-              <circle cx="90" cy="210" r="165" stroke="#5C4CF6" strokeWidth="1" strokeOpacity="0.08" />
-
-              {Array.from({ length: 5 }).map((_, r) =>
-                Array.from({ length: 6 }).map((_, c) => (
-                  <circle
-                    key={`${r}-${c}`}
-                    cx={180 + c * 10}
-                    cy={130 + r * 10}
-                    r="1.2"
-                    fill="#6366F1"
-                    fillOpacity="0.16"
-                  />
-                ))
-              )}
-            </svg>
-
-            {/* Motivational motto */}
-            <div className="absolute bottom-3 right-7 text-right flex flex-col items-end">
-              <span className="text-[10px] font-semibold text-[#8692A6] leading-[1.35]">Monitor</span>
-              <span className="text-[10px] font-semibold text-[#8692A6] leading-[1.35]">Respond</span>
-              <span className="text-[10px] font-semibold text-[#8692A6] leading-[1.35]">Resolve</span>
-              <span className="text-[10px] font-semibold text-[#8692A6] leading-[1.35]">Together</span>
-              <div className="w-7 h-[1.5px] bg-[#CFD6E2] mt-1.5 rounded-full" />
-            </div>
-          </div>
-        )}
 
         {/* Footer Area: Telemetry + User Profile & Logout */}
         <div className="p-3.5 border-t border-[#EEF2F6] bg-[#FAFCFF] relative z-10 space-y-2.5">

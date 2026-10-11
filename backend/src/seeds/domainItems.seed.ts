@@ -1,0 +1,77 @@
+import mongoose from 'mongoose';
+import { DomainItem } from '../models/DomainItem';
+import { SeedDataset } from './datasets/types';
+import { daysAgo, logSeed } from './seed.utils';
+
+export interface SeedItemsResult {
+  createdCount: number;
+  updatedCount: number;
+  totalDemoItems: number;
+}
+
+/**
+ * Seeds domain items deterministically for the given demo user.
+ * Re-running multiple times updates existing demo records instead of creating duplicates.
+ */
+export async function seedDomainItems(
+  dataset: SeedDataset,
+  ownerId: mongoose.Types.ObjectId
+): Promise<SeedItemsResult> {
+  let createdCount = 0;
+  let updatedCount = 0;
+
+  for (const template of dataset.items) {
+    const createdAt = daysAgo(template.daysAgo);
+    const itemData = {
+      title: template.title,
+      description: template.description,
+      category: template.category,
+      status: template.status,
+      priority: template.priority || 'medium',
+      attributes: template.attributes || {},
+      owner: ownerId,
+      isDemo: true,
+      createdAt,
+      updatedAt: createdAt,
+    };
+
+    // Find by title and owner to ensure deterministic idempotency
+    const existing = await DomainItem.findOne({ title: template.title, owner: ownerId });
+
+    if (existing) {
+      existing.description = template.description;
+      existing.category = template.category;
+      existing.status = template.status;
+      existing.priority = template.priority || 'medium';
+      existing.attributes = template.attributes || {};
+      existing.isDemo = true;
+      existing.createdAt = createdAt;
+      await existing.save();
+      updatedCount++;
+    } else {
+      const newItem = new DomainItem(itemData);
+      await newItem.save();
+      createdCount++;
+    }
+  }
+
+  const totalDemoItems = await DomainItem.countDocuments({ owner: ownerId, isDemo: true });
+
+  logSeed(`📦 Items seed summary: ${createdCount} created, ${updatedCount} updated. Total demo items: ${totalDemoItems}`);
+
+  return {
+    createdCount,
+    updatedCount,
+    totalDemoItems,
+  };
+}
+
+/**
+ * Safely removes ONLY demo items created for the demo user.
+ * Never drops database or touches non-demo user records.
+ */
+export async function resetDemoItems(ownerId: mongoose.Types.ObjectId): Promise<number> {
+  const result = await DomainItem.deleteMany({ owner: ownerId, isDemo: true });
+  logSeed(`🧹 Demo items reset: Removed ${result.deletedCount} demo records for owner ${ownerId}`);
+  return result.deletedCount;
+}

@@ -8,11 +8,6 @@ export interface AuthResponse {
   message?: string;
 }
 
-export interface ForgotPasswordResponse {
-  success: boolean;
-  message: string;
-  otp?: string;
-}
 
 export const authApi = {
   async login(email: string, pass: string): Promise<AuthResponse> {
@@ -48,42 +43,9 @@ export const authApi = {
     return res;
   },
 
-  async forgotPassword(email: string): Promise<ForgotPasswordResponse> {
-    return apiClient.post<ForgotPasswordResponse>('/auth/forgot-password', { email });
-  },
-
-  async resetPassword(email: string, otp: string, newPassword: string): Promise<{ success: boolean; message: string }> {
-    return apiClient.post<{ success: boolean; message: string }>('/auth/reset-password', {
-      email,
-      otp,
-      newPassword,
-    });
-  },
 
   async getMe(): Promise<{ success: boolean; user: User }> {
     return apiClient.get<{ success: boolean; user: User }>('/auth/me');
-  },
-
-  async syncOAuthUser(payload: {
-    email: string;
-    name?: string;
-    provider: 'google' | 'github';
-    providerId?: string;
-    avatarUrl?: string;
-  }): Promise<AuthResponse> {
-    const res = await apiClient.post<AuthResponse>('/auth/sync', payload);
-    if (res.success && res.token) {
-      setStoredSession(res.token, res.user);
-    }
-    return res;
-  },
-
-  async githubLogin(code: string, redirectUri?: string): Promise<AuthResponse> {
-    const res = await apiClient.post<AuthResponse>('/auth/github', { code, redirectUri });
-    if (res.success && res.token) {
-      setStoredSession(res.token, res.user);
-    }
-    return res;
   },
 
   logout(): void {

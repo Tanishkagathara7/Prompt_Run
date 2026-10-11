@@ -10,10 +10,10 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import { connectDatabase } from '../config/database';
 import { AnalyticsService } from '../services/analytics.service';
-import { HackathonItem } from '../models/HackathonItem';
+import { DomainItem } from '../models/DomainItem';
 
 const API_BASE_URL = process.env.TEST_API_URL || 'http://localhost:5000/api';
-const JWT_SECRET = process.env.JWT_SECRET || 'app_super_secret_jwt_key_hackathon_2026_9xqm';
+const JWT_SECRET = process.env.JWT_SECRET || 'app_super_secret_jwt_key_domain_2026_9xqm';
 
 // Create test user IDs
 const USER_A_ID = new mongoose.Types.ObjectId().toString();
@@ -40,7 +40,7 @@ describe('Analytics Module Tests', () => {
   after(async () => {
     if (isDbConnected) {
       try {
-        await HackathonItem.deleteMany({ owner: { $in: [USER_A_ID, USER_B_ID, USER_ZERO_ID] } });
+        await DomainItem.deleteMany({ owner: { $in: [USER_A_ID, USER_B_ID, USER_ZERO_ID] } });
       } catch {}
     }
   });
@@ -78,7 +78,7 @@ describe('Analytics Module Tests', () => {
       { title: 'Env Task 2', category: 'Environment', status: 'pending', owner: new mongoose.Types.ObjectId(USER_A_ID) },
     ];
 
-    await HackathonItem.insertMany(userAItems);
+    await DomainItem.insertMany(userAItems);
 
     // Seed User B data (2 items total: 1 completed, 1 pending)
     const userBItems = [
@@ -86,7 +86,7 @@ describe('Analytics Module Tests', () => {
       { title: 'User B Item 2', category: 'Finance', status: 'pending', owner: new mongoose.Types.ObjectId(USER_B_ID) },
     ];
 
-    await HackathonItem.insertMany(userBItems);
+    await DomainItem.insertMany(userBItems);
   });
 
   test('1, 4, 5, 6, 7, 8. Authenticated analytics request returns accurate overview & completion rate', async () => {

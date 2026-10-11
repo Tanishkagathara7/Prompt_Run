@@ -15,27 +15,27 @@ export const FAQAccordion: React.FC = () => {
   const faqs: FAQItem[] = [
     {
       id: '01',
-      question: 'How is state synchronized between Next.js and React Native?',
+      question: 'How is state synchronized in the web application?',
       answer:
-        'Both clients consume a unified Node.js / Express REST API backed by MongoDB Atlas. Authentication is maintained via cryptographically verified JWT tokens (stored in secure browser storage for web, and expo-secure-store for native mobile). Cache invalidation triggers immediate re-fetches for consistent operational metrics across both platforms.',
+        'The Next.js client consumes a unified Node.js / Express REST API backed by MongoDB Atlas. Authentication is maintained via cryptographically verified JWT tokens stored in secure browser storage. Reactive state management and cache revalidation trigger immediate updates for consistent operational metrics.',
     },
     {
       id: '02',
-      question: 'What AI gateway capabilities are natively integrated?',
+      question: 'How are roles and permissions managed across workspaces?',
       answer:
-        'The shared backend incorporates OpenRouter AI Gateway integration. It executes structured entity summarization, priority classification, and action plan generation across your operations items with strict rate-limiting and token usage tracking.',
+        'The architecture provides role-based access control (RBAC) across command dispatchers, administrators, and field units with token-level permission guards and rate limiting.',
     },
     {
       id: '03',
-      question: 'Can this architecture pivot to new hackathon problem statements?',
+      question: 'Can this architecture adapt to new domain problem statements?',
       answer:
-        'Yes. The core data model is designed around extensible domain entities, automated file storage (via Multer), notification routing, and dynamic analytics. New domain attributes can be mapped in the shared contracts without altering the base cross-platform plumbing.',
+        'Yes. The core data model is designed around extensible domain entities, automated file storage (via Multer), notification routing, and dynamic analytics. New domain attributes can be added to the core data model without altering the base plumbing.',
     },
     {
       id: '04',
-      question: 'Does the mobile application support native offline-first workflows?',
+      question: 'How does the web application handle real-time telemetry?',
       answer:
-        'Yes. The React Native Expo mobile client utilizes Reanimated 4.5.1 gesture handling, persistent secure credentials, local caching, and automated network detection to provide seamless mobile agility in spotty network environments.',
+        'The Next.js workspace utilizes reactive state hooks, polling revalidation, and instant cache invalidation upon create/update actions to ensure metrics, KPIs, and item lists stay accurate without manual page reloads.',
     },
     {
       id: '05',

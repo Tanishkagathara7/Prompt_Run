@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Loader2, Sparkles } from 'lucide-react';
-import { itemsApi, aiApi } from '@/lib/api/domain';
+import { ArrowLeft, Loader2 } from 'lucide-react';
+import { itemsApi } from '@/lib/api/domain';
 import { useToast } from '@/lib/context/ToastContext';
 
 export default function CreateItemPage() {
@@ -16,8 +16,6 @@ export default function CreateItemPage() {
   const [category, setCategory] = useState('Engineering');
   const [status, setStatus] = useState('pending');
   const [loading, setLoading] = useState(false);
-  const [aiGenerating, setAiGenerating] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) {
@@ -37,32 +35,14 @@ export default function CreateItemPage() {
       router.push(`/items/${res.data.id}`);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Failed to create item';
+      if (msg.includes('expired') || msg.includes('token') || (err as any)?.status === 401) {
+        toast('Your session expired. Please sign in again.', 'error');
+        router.push('/login');
+        return;
+      }
       toast(msg, 'error');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleAiRefine = async () => {
-    if (!title.trim()) {
-      toast('Enter an item title first to generate AI description', 'info');
-      return;
-    }
-    setAiGenerating(true);
-    try {
-      const res = await aiApi.generate({
-        prompt: `Write a clear, structured operational task description and 3 actionable sub-tasks for: "${title}". Category: ${category}.`,
-        system: 'You are an expert technical operations assistant. Keep it concise, structured, and professional.',
-      });
-      if (res.data?.text) {
-        setDescription(res.data.text);
-        toast('Description enhanced with AI!', 'success');
-      }
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'AI generation failed';
-      toast(msg, 'error');
-    } finally {
-      setAiGenerating(false);
     }
   };
 
@@ -132,23 +112,10 @@ export default function CreateItemPage() {
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="mb-1.5">
               <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-600">
                 Description & Action Plan
               </label>
-              <button
-                type="button"
-                onClick={handleAiRefine}
-                disabled={aiGenerating}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer disabled:opacity-50"
-              >
-                {aiGenerating ? (
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-                )}
-                <span>Generate with AI Copilot</span>
-              </button>
             </div>
             <textarea
               rows={5}

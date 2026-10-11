@@ -8,10 +8,7 @@ export interface IUser extends Document {
   domainProfile?: Record<string, any>;
   passwordHash?: string;
   avatarUrl?: string;
-  provider: 'email' | 'google' | 'github';
-  providerId?: string;
-  resetPasswordOtp?: string;
-  resetPasswordExpires?: Date;
+  provider: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -53,24 +50,12 @@ const UserSchema: Schema = new Schema(
     },
     provider: {
       type: String,
-      enum: ['email', 'google', 'github'],
       default: 'email',
-    },
-    providerId: {
-      type: String,
-    },
-    resetPasswordOtp: {
-      type: String,
-    },
-    resetPasswordExpires: {
-      type: Date,
     },
   },
   {
     timestamps: true,
   }
 );
-
-UserSchema.index({ provider: 1, providerId: 1 }, { sparse: true });
 
 export const User = mongoose.model<IUser>('User', UserSchema);

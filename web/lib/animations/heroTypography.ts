@@ -69,8 +69,8 @@ export const HERO_WORD_SEQUENCE: WordHighlightItem[] = [
     shadowColor: 'rgba(6, 182, 212, 0.35)',
   },
   {
-    id: 'mobile',
-    word: 'Mobile',
+    id: 'web',
+    word: 'Web',
     bgColor: '#10B981',       // Vibrant Emerald
     textColor: '#FFFFFF',
     borderColor: '#059669',

@@ -4,17 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "npm run dev:all",
-    "dev:all": "npx concurrently -n \"mobile,web,backend\" -c \"cyan,blue,magenta\" \"npm run mobile\" \"npm run web\" \"npm run backend\"",
-    "mobile": "cd frontend && npx expo start",
-    "frontend": "cd frontend && npx expo start",
-    "frontend:web": "cd frontend && npx expo start --web",
+    "dev:all": "npx concurrently -n \"web,backend\" -c \"blue,magenta\" \"npm run web\" \"npm run backend\"",
     "web": "cd web && npm run dev",
     "web:build": "cd web && npm run build",
     "backend": "cd backend && npm run dev",
     "generate:product": "npx tsx scripts/analyzer/productGenerationEngine.ts",
-    "test:generator": "npx tsx scripts/tests/testProductGenerator.ts",
-    "shared:build": "npm run build --prefix shared",
-    "install:all": "npm install && npm install --prefix shared && npm run build --prefix shared && npm install --prefix backend && npm install --prefix frontend && npm install --prefix web"
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix web"
   },
   "devDependencies": {
     "@types/node": "^22.20.3",

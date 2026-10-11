@@ -19,11 +19,11 @@ export const InteractiveDemonstrator: React.FC = () => {
       accent: 'blue',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
       description:
-        `Domain ${entity.toLowerCase()} records created on the desktop workspace validate Mongoose schemas and execute atomic mutations against MongoDB Atlas.`,
+        `Domain ${entity.toLowerCase()} records created on the workspace validate Mongoose schemas and execute precision integer paise mutations against MongoDB Atlas.`,
       requestMethod: 'POST',
       requestPath: '/api/items',
       payload: `{
-  "title": "Priority ${entity} Dispatch",
+  "title": "Essential Grocery Run",
   "category": "${category}",
   "priority": "high",
   "status": "in_progress"
@@ -38,47 +38,47 @@ export const InteractiveDemonstrator: React.FC = () => {
     {
       id: 1,
       phase: '02',
-      title: 'OpenRouter AI Summarization & Task Synthesis',
+      title: 'Runway Analytics & Cash Flow Aggregation',
       client: 'EXPRESS CORE API',
       accent: 'lavender',
       badgeBg: 'bg-violet-50 text-violet-700 border-violet-200',
       description:
-        'The shared backend dispatches verified records to the OpenRouter AI Gateway to generate operational risk evaluations and action summaries.',
-      requestMethod: 'POST',
-      requestPath: '/api/ai/generate',
+        'The backend computes real-time operational metrics, category distributions, and 30-day budget burn velocity.',
+      requestMethod: 'GET',
+      requestPath: '/api/analytics/overview',
       payload: `{
-  "model": "openrouter/auto",
-  "prompt": "Evaluate current ${entity.toLowerCase()} pipeline for operational risk and dispatch priority."
+  "scope": "workspace",
+  "window": "30d"
 }`,
       responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Gateway: OpenRouter • Tokens Ingested: 284 • Status: Ready',
+      responseDetail: 'Status: 200 OK • Latency: 22ms • Cached: Revalidated',
       systemMetrics: [
-        { label: 'AI Gateway', value: 'OpenRouter' },
-        { label: 'Audit Output', value: 'Generated' },
+        { label: 'Aggregation', value: 'Pipeline' },
+        { label: 'Telemetry', value: 'Active' },
       ],
     },
     {
       id: 2,
       phase: '03',
-      title: 'Native Mobile Parity & SecureStore Persistence',
-      client: 'REACT NATIVE EXPO',
+      title: 'Reactive State Sync & Telemetry Metrics',
+      client: 'NEXT.JS APP ROUTER',
       accent: 'green',
       badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       description:
-        'Mobile clients receive cache invalidation signals and persist cryptographic session credentials securely via expo-secure-store.',
+        'Web clients automatically revalidate telemetry feeds, updating KPI metric summaries and data tables with zero latency.',
       requestMethod: 'GET',
-      requestPath: '/api/items?syncToken=verified',
-      payload: `// Synchronized native payload
+      requestPath: '/api/analytics/overview',
+      payload: `// Synchronized web telemetry payload
 {
-  "client": "Expo SDK 57",
-  "secureStoreToken": "Bearer eyJhbGciOiJIUzI1...",
+  "client": "Next.js 16 App Router",
+  "authMethod": "Bearer JWT Token",
   "status": "synchronized"
 }`,
       responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Client Invalidation: Verified • Gesture UI Re-Render: < 16ms',
+      responseDetail: 'Cache Revalidation: Instant • UI Hydration: < 16ms',
       systemMetrics: [
-        { label: 'Sync Delay', value: '< 35ms' },
-        { label: 'Native Storage', value: 'Encrypted' },
+        { label: 'Sync Delay', value: '< 25ms' },
+        { label: 'Web State', value: 'Hydrated' },
       ],
     },
   ];

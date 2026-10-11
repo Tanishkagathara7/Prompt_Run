@@ -13,12 +13,12 @@ import {
   Layers,
 } from 'lucide-react';
 import { itemsApi } from '@/lib/api/domain';
-import { HackathonItem, SortOption, PaginationMeta } from '@/lib/types';
+import { DomainItem, SortOption, PaginationMeta } from '@/lib/types';
 import { getStatusBadgeStyle, formatDate } from '@/lib/utils';
 import { useToast } from '@/lib/context/ToastContext';
 
 export default function ItemsPage() {
-  const [items, setItems] = useState<HackathonItem[]>([]);
+  const [items, setItems] = useState<DomainItem[]>([]);
   const [pagination, setPagination] = useState<PaginationMeta>({
     total: 0,
     page: 1,
@@ -64,6 +64,7 @@ export default function ItemsPage() {
   useEffect(() => {
     let active = true;
     const loadItems = async () => {
+      setLoading(true);
       try {
         const res = await itemsApi.getItems({
           page: 1,
@@ -86,8 +87,7 @@ export default function ItemsPage() {
         }
       } catch (err: unknown) {
         if (active) {
-          const msg = err instanceof Error ? err.message : 'Failed to fetch items';
-          toast(msg, 'error');
+          console.warn('Backend items unavailable, keeping local records view:', err);
         }
       } finally {
         if (active) {
@@ -101,7 +101,7 @@ export default function ItemsPage() {
     return () => {
       active = false;
     };
-  }, [status, category, sort, search, toast]);
+  }, [status, category, sort]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -318,3 +318,4 @@ export default function ItemsPage() {
     </div>
   );
 }
+

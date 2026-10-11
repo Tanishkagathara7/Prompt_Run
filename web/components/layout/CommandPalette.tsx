@@ -14,7 +14,7 @@ import {
   X,
 } from 'lucide-react';
 import { itemsApi } from '@/lib/api/domain';
-import { HackathonItem } from '@/lib/types';
+import { DomainItem } from '@/lib/types';
 import { domainConfig } from '@/lib/domain.config';
 
 interface CommandPaletteProps {
@@ -25,7 +25,7 @@ interface CommandPaletteProps {
 export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
   const router = useRouter();
   const [query, setQuery] = useState('');
-  const [items, setItems] = useState<HackathonItem[]>([]);
+  const [items, setItems] = useState<DomainItem[]>([]);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -89,12 +89,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   if (!isOpen) return null;
 
   const quickNav = [
-    { label: 'Go to Command Center Dashboard', href: '/dashboard', icon: Layers, badge: 'Overview' },
-    { label: 'Log New Incident Record', href: '/items/new', icon: Plus, badge: 'Create' },
-    { label: 'View All Incident Records', href: '/items', icon: ShieldAlert, badge: 'Triage' },
-    { label: 'Launch AI Copilot Workspace', href: '/ai-assistant', icon: Sparkles, badge: 'Intelligence' },
-    { label: 'Storage & Incident Assets', href: '/files', icon: FolderOpen, badge: 'Media' },
-    { label: 'Operational Notifications', href: '/notifications', icon: Bell, badge: 'Alerts' },
+    { label: 'Go to Runway Command Dashboard', href: '/dashboard', icon: Layers, badge: 'Overview' },
+    { label: 'Dedicated Expense & Cash Ledger', href: '/ledger', icon: Plus, badge: 'Ledger' },
+    { label: 'Storage & Receipt Proof Assets', href: '/files', icon: FolderOpen, badge: 'Media' },
+    { label: 'Budget & Burn Rate Alerts', href: '/notifications', icon: Bell, badge: 'Alerts' },
   ];
 
   const navigate = (href: string) => {
@@ -126,7 +124,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search incidents, operational commands, or navigation... (Esc to close)"
+            placeholder="Search expenses, budget commands, or navigation... (Esc to close)"
             className="w-full bg-transparent border-none text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-0"
           />
           {query ? (
@@ -239,7 +237,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
               Esc
             </kbd>
           </div>
-          <span className="font-medium text-zinc-700">Pulse Command Center</span>
+          <span className="font-medium text-zinc-700">SurvivalRun Runway Command</span>
         </div>
       </div>
     </div>

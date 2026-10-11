@@ -104,7 +104,7 @@ The web interface is engineered across 4 distinct viewport tiers:
 
 ## 🎨 UI/UX Standards & Interaction States
 
-To ensure a standout presentation for hackathon judges, every interactive feature must implement the complete 4-state lifecycle:
+To ensure a standout presentation for reviewers, every interactive feature must implement the complete 4-state lifecycle:
 
 1. **Loading State**: Clean pulse skeletons or animated loaders (never freeze the UI or leave empty blank screens).
 2. **Success State**: Immediate optimistic UI update or success Toast confirmation.
@@ -121,15 +121,7 @@ All HTTP requests pass through `web/lib/api/client.ts`:
 - **Structured Error Model**: Throws typed `ApiError(message, status, data)` with HTTP status code and server response payload.
 - **Base URL Fallback**: Reads `process.env.NEXT_PUBLIC_API_URL` with fallback to deployed production API.
 
----
 
-## 🔍 Search Engine Optimization (SEO)
-
-- **Metadata Architecture**: Root `app/layout.tsx` defines high-conversion OpenGraph, Twitter Card, and semantic metadata tags.
-- **Indexability Controls**:
-  - Marketing pages (`/`) are fully indexable with structured metadata.
-  - Workspace and Auth routes (`/dashboard`, `/items`, `/login`) include `robots: { index: false, follow: false }` to prevent indexing private workspace data.
-- **Heading Hierarchy**: Exactly one `<h1>` per page, followed by logical `<h2>` and `<h3>` section demarcations.
 
 ---
 

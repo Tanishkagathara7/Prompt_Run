@@ -1,11 +1,11 @@
-import { HackathonItemStatus } from '../../models/HackathonItem';
+import { DomainItemStatus } from '../../models/DomainItem';
 
 export interface SeedItemTemplate {
   seedKey: string;
   title: string;
   description: string;
   category: string;
-  status: HackathonItemStatus;
+  status: DomainItemStatus;
   priority?: 'low' | 'medium' | 'high' | 'urgent';
   attributes?: Record<string, any>;
   daysAgo: number;
