@@ -15,33 +15,33 @@ export const FAQAccordion: React.FC = () => {
   const faqs: FAQItem[] = [
     {
       id: '01',
-      question: 'How is state synchronized in the web application?',
+      question: 'How is the safe daily burn allowance calculated?',
       answer:
-        'The Next.js client consumes a unified Node.js / Express REST API backed by MongoDB Atlas. Authentication is maintained via cryptographically verified JWT tokens stored in secure browser storage. Reactive state management and cache revalidation trigger immediate updates for consistent operational metrics.',
+        'The engine takes your total remaining balance (from ₹10,000 starting budget), automatically subtracts all locked recurring commitments (such as rent and utility bills) and your protected savings cushion, and divides the remaining discretionary amount by the exact days left in the month. This gives you an unshakeable daily spending ceiling.',
     },
     {
       id: '02',
-      question: 'How are roles and permissions managed across workspaces?',
+      question: 'Why does SurvivalRun use integer paise math instead of standard decimals?',
       answer:
-        'The architecture provides role-based access control (RBAC) across command dispatchers, administrators, and field units with token-level permission guards and rate limiting.',
+        'Floating-point numbers in JavaScript can cause precision drift (like 0.1 + 0.2 = 0.30000000000000004). SurvivalRun stores and calculates every transaction in integer paise (1 Rupee = 100 paise), guaranteeing 100% mathematical accuracy across 30 days of micro-transactions with zero rounding errors.',
     },
     {
       id: '03',
-      question: 'Can this architecture adapt to new domain problem statements?',
+      question: 'How does the "What-If" decision simulator protect against impulsive spending?',
       answer:
-        'Yes. The core data model is designed around extensible domain entities, automated file storage (via Multer), notification routing, and dynamic analytics. New domain attributes can be added to the core data model without altering the base plumbing.',
+        'Before committing to an unplanned purchase (e.g., dining out or electronics), you enter the tentative amount into the simulator. It instantly projects your new daily safe allowance for the rest of the month and highlights potential deficit risk, allowing you to make conscious financial choices before parting with your cash.',
     },
     {
       id: '04',
-      question: 'How does the web application handle real-time telemetry?',
+      question: 'What happens to recurring commitments like rent or Wi-Fi bills?',
       answer:
-        'The Next.js workspace utilizes reactive state hooks, polling revalidation, and instant cache invalidation upon create/update actions to ensure metrics, KPIs, and item lists stay accurate without manual page reloads.',
+        'Fixed bills are flagged as locked commitments. The moment they are entered, their total is ring-fenced from your daily spending allowance so you never accidentally spend rent money on everyday groceries.',
     },
     {
       id: '05',
-      question: 'Is the web application production-ready and accessible?',
+      question: 'Can I lock an emergency savings cushion?',
       answer:
-        'The web client is built on Next.js App Router with strict WCAG AA contrast ratios, keyboard navigation, full semantic HTML5 elements, and dynamic client-side rendering with motion fallbacks for users preferring reduced motion.',
+        'Yes. You can reserve a dedicated savings buffer (e.g., ₹1,000 to ₹2,000). The runway dashboard treats this buffer as quarantined capital, ensuring you finish the 30-day challenge with a surplus rather than hitting zero.',
     },
   ];
 

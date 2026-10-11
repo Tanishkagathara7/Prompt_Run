@@ -14,71 +14,74 @@ export const InteractiveDemonstrator: React.FC = () => {
     {
       id: 0,
       phase: '01',
-      title: `${entity} Intake & Schema Validation`,
+      title: 'Expense Logging & Integer Paise Calculation',
       client: 'NEXT.JS CLIENT',
       accent: 'blue',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
       description:
-        `Domain ${entity.toLowerCase()} records created on the workspace validate Mongoose schemas and execute precision integer paise mutations against MongoDB Atlas.`,
+        'Log grocery or dining out expenses with integer paise precision (₹650.00 = 65000 paise). Avoid floating-point rounding errors across the 30-day runway.',
       requestMethod: 'POST',
-      requestPath: '/api/items',
+      requestPath: '/api/transactions',
       payload: `{
-  "title": "Essential Grocery Run",
-  "category": "${category}",
-  "priority": "high",
-  "status": "in_progress"
+  "title": "Weekend Grocery Restock",
+  "amountPaise": 65000,
+  "category": "Essentials",
+  "date": "Day 14 of 30",
+  "isRecurring": false
 }`,
       responseStatus: 'HTTP/1.1 201 Created',
-      responseDetail: 'Mongoose Transaction: Verified • MongoDB Atlas: Written',
+      responseDetail: 'Integer Paise Engine: Validated • Remaining Runway: ₹5,420.00',
       systemMetrics: [
-        { label: 'DB Latency', value: '38ms' },
-        { label: 'Schema Audit', value: 'Strict Type' },
+        { label: 'Precision', value: '100% Paise' },
+        { label: 'Runway Impact', value: '-₹40.62/day' },
       ],
     },
     {
       id: 1,
       phase: '02',
-      title: 'Runway Analytics & Cash Flow Aggregation',
+      title: 'Safe Daily Burn Allowance Engine',
       client: 'EXPRESS CORE API',
       accent: 'lavender',
       badgeBg: 'bg-violet-50 text-violet-700 border-violet-200',
       description:
-        'The backend computes real-time operational metrics, category distributions, and 30-day budget burn velocity.',
+        'The financial engine subtracts locked commitments and protected cushion, dividing the remaining balance across remaining days.',
       requestMethod: 'GET',
       requestPath: '/api/analytics/overview',
       payload: `{
-  "scope": "workspace",
-  "window": "30d"
+  "startingBudgetPaise": 1000000,
+  "lockedCommitmentsPaise": 300000,
+  "cushionPaise": 150000,
+  "daysRemaining": 16
 }`,
       responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Status: 200 OK • Latency: 22ms • Cached: Revalidated',
+      responseDetail: 'Daily Safe Burn: ₹338.75/day • Status: Zero Deficit Protected',
       systemMetrics: [
-        { label: 'Aggregation', value: 'Pipeline' },
-        { label: 'Telemetry', value: 'Active' },
+        { label: 'Safe Daily Burn', value: '₹338.75' },
+        { label: 'Runway Health', value: 'Optimal' },
       ],
     },
     {
       id: 2,
       phase: '03',
-      title: 'Reactive State Sync & Telemetry Metrics',
+      title: 'What-If Simulation & Savings Buffer Lock',
       client: 'NEXT.JS APP ROUTER',
       accent: 'green',
       badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       description:
-        'Web clients automatically revalidate telemetry feeds, updating KPI metric summaries and data tables with zero latency.',
-      requestMethod: 'GET',
-      requestPath: '/api/analytics/overview',
-      payload: `// Synchronized web telemetry payload
-{
-  "client": "Next.js 16 App Router",
-  "authMethod": "Bearer JWT Token",
-  "status": "synchronized"
+        'Simulate impulse purchases before spending. Instantly preview how a ₹1,200 weekend trip impacts your daily allowance before locking ₹1,500 safely into savings.',
+      requestMethod: 'POST',
+      requestPath: '/api/simulate/what-if',
+      payload: `{
+  "proposedExpensePaise": 120000,
+  "currentDailyBurn": 338.75,
+  "projectedDailyBurn": 263.75,
+  "verdict": "Caution: Reduces daily allowance by 22%"
 }`,
       responseStatus: 'HTTP/1.1 200 OK',
-      responseDetail: 'Cache Revalidation: Instant • UI Hydration: < 16ms',
+      responseDetail: 'Simulation Verified • Savings Cushion Safeguarded',
       systemMetrics: [
-        { label: 'Sync Delay', value: '< 25ms' },
-        { label: 'Web State', value: 'Hydrated' },
+        { label: 'Impulse Shield', value: 'Active' },
+        { label: 'Cushion Saved', value: '₹1,500.00' },
       ],
     },
   ];

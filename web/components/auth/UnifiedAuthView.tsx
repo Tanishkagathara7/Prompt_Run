@@ -112,15 +112,15 @@ export function UnifiedAuthView({ initialMode = 'signin' }: AuthPageProps) {
           lines={
             mode === 'signin'
               ? [
-                  ['AUTHORITATIVE', 'SESSION'],
-                  ['ON', 'WEB', 'AND', 'MOBILE.'],
+                  ['SURVIVE', 'THE', 'MONTH.'],
+                  ['₹10,000', 'BUDGET', 'RUNWAY.'],
                 ]
               : [
-                  ['SIGN', 'IN', 'TO APP.'],
-                  ['ENTER.', 'BUILD.', 'SHIP.'],
+                  ['JOIN', 'THE', 'RUNWAY.'],
+                  ['30', 'DAYS.', 'ZERO', 'DEFICIT.'],
                 ]
           }
-          subheading="Cryptographically secure JWT authentication and zero-latency web workspace."
+          subheading="Master your ₹10,000 budget with precision integer paise accounting, What-If decision simulation, and daily burn rate protection."
         />
 
         {/* Logo presentation with load animation and cursor tilt */}
@@ -201,12 +201,12 @@ export function UnifiedAuthView({ initialMode = 'signin' }: AuthPageProps) {
           {/* Header */}
           <div className="space-y-1 mb-6">
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 transition-all duration-300">
-              {mode === 'signin' ? `Sign in to ${domainConfig.brand.name}` : `Join ${domainConfig.brand.name}`}
+              {mode === 'signin' ? 'Sign in to SurvivalRun' : 'Create Runway Account'}
             </h2>
             <p className="text-xs sm:text-sm text-zinc-500">
               {mode === 'signin'
-                ? `Enter credentials to access the ${domainConfig.brand.name} operations center.`
-                : `Set up your profile to enter the ${domainConfig.brand.name} workspace.`}
+                ? 'Enter credentials to access your ₹10,000 budget command center.'
+                : 'Start your 30-day budget survival plan with zero deficit drift.'}
             </p>
           </div>
 

@@ -106,61 +106,44 @@ export default function MarketingPage() {
             {/* Editorial Display Headline — Unified Color with Kinetic Multi-Color Animated Transitions */}
             <div className="hero-headline-wrapper space-y-1.5 sm:space-y-3 max-w-4xl lg:max-w-5xl cursor-default select-none mx-auto py-1">
               <h1 className="text-5xl sm:text-7xl lg:text-[5.25rem] xl:text-[5.75rem] font-extrabold tracking-tight leading-[1.10] sm:leading-[1.07] text-center text-[#1E1B4B]">
-                {/* Line 1: Precision Operations */}
+                {/* Line 1: Survive Budget */}
                 <div className="hero-headline-1 flex flex-wrap items-center justify-center gap-2 sm:gap-3 opacity-0">
-                  {/* Precision */}
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="precision"
+                    data-word="survive"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
                     <span
                       className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
-                      style={{ backgroundColor: '#2563EB' }}
+                      style={{ backgroundColor: '#5B45F5' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Precision
+                      Survive
                     </span>
                   </span>
 
-                  {/* Operations */}
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="operations"
+                    data-word="budget"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
                     <span
                       className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
-                      style={{ backgroundColor: '#EC4899' }}
+                      style={{ backgroundColor: '#16B981' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Operations
+                      Budget
                     </span>
                   </span>
                 </div>
 
-                {/* Line 2: on Desktop */}
+                {/* Line 2: for 30-Days */}
                 <div className="hero-headline-2 flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-0.5 opacity-0">
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="on-1"
-                    data-text-color="#FFFFFF"
-                    data-base-color="#1E1B4B"
-                  >
-                    <span
-                      className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
-                      style={{ backgroundColor: '#10B981' }}
-                    />
-                    <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      on
-                    </span>
-                  </span>
-
-                  <span
-                    className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="desktop"
+                    data-word="for-1"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
@@ -169,32 +152,31 @@ export default function MarketingPage() {
                       style={{ backgroundColor: '#F59E0B' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Desktop
+                      for
                     </span>
                   </span>
-                </div>
 
-                {/* Line 3: Native Velocity on Mobile. */}
-                <div className="hero-headline-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-0.5 opacity-0">
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="native"
+                    data-word="days-1"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
                     <span
                       className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
-                      style={{ backgroundColor: '#6366F1' }}
+                      style={{ backgroundColor: '#2563EB' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Native
+                      30-Days
                     </span>
                   </span>
+                </div>
 
-                  {/* Velocity */}
+                {/* Line 3: with ₹10,000 Zero Deficit. */}
+                <div className="hero-headline-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-0.5 opacity-0">
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="velocity"
+                    data-word="with-1"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
@@ -203,30 +185,13 @@ export default function MarketingPage() {
                       style={{ backgroundColor: '#8B5CF6' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Velocity
+                      with
                     </span>
                   </span>
 
-                  {/* on */}
                   <span
                     className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="on-2"
-                    data-text-color="#FFFFFF"
-                    data-base-color="#1E1B4B"
-                  >
-                    <span
-                      className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
-                      style={{ backgroundColor: '#06B6D4' }}
-                    />
-                    <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      on
-                    </span>
-                  </span>
-
-                  {/* Web. */}
-                  <span
-                    className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
-                    data-word="web"
+                    data-word="amount-1"
                     data-text-color="#FFFFFF"
                     data-base-color="#1E1B4B"
                   >
@@ -235,7 +200,37 @@ export default function MarketingPage() {
                       style={{ backgroundColor: '#10B981' }}
                     />
                     <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
-                      Web
+                      ₹10,000
+                    </span>
+                  </span>
+
+                  <span
+                    className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
+                    data-word="zero"
+                    data-text-color="#FFFFFF"
+                    data-base-color="#1E1B4B"
+                  >
+                    <span
+                      className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
+                      style={{ backgroundColor: '#EC4899' }}
+                    />
+                    <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
+                      Zero
+                    </span>
+                  </span>
+
+                  <span
+                    className="hero-anim-word relative inline-block px-1.5 sm:px-2 py-0.5 rounded-xl sm:rounded-2xl"
+                    data-word="deficit"
+                    data-text-color="#FFFFFF"
+                    data-base-color="#1E1B4B"
+                  >
+                    <span
+                      className="word-highlight-bg absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 pointer-events-none"
+                      style={{ backgroundColor: '#5B45F5' }}
+                    />
+                    <span className="word-text relative z-10 text-[#1E1B4B] font-extrabold tracking-tight">
+                      Deficit
                     </span>
                   </span>
                 </div>
@@ -244,9 +239,8 @@ export default function MarketingPage() {
 
             {/* Value Proposition & CTAs (Centered, Balanced Rhythm) */}
             <div className="max-w-2xl mx-auto space-y-6 pt-1">
-              {/* opacity:0 inline style ensures no flash before GSAP fromTo sets initial state */}
               <p className="hero-copy text-base sm:text-lg text-zinc-600 leading-relaxed font-normal text-center" style={{ opacity: 0 }}>
-                {domainConfig.landing.hero.subheadline}
+                Live financial command center designed to conquer the 30-day survival challenge with ₹10,000. Balance daily allowances, simulate &ldquo;What If?&rdquo; impulse buys, shield emergency savings, and guarantee zero month-end deficit.
               </p>
 
               <div className="hero-cta flex flex-wrap items-center justify-center gap-3.5" style={{ opacity: 0 }}>
@@ -294,22 +288,22 @@ export default function MarketingPage() {
            ======================================================== */}
         <section className="section-philosophy py-10 sm:py-14 px-4 sm:px-6 border-b border-black/[0.06]">
           <div className="max-w-5xl mx-auto space-y-5">
-            <div className="philosophy-eyebrow font-mono text-xs font-semibold uppercase tracking-wider text-blue-600">
-              {'// 02. ARCHITECTURAL PHILOSOPHY'}
+            <div className="philosophy-eyebrow font-mono text-xs font-semibold uppercase tracking-wider text-emerald-600">
+              {'// 02. BUDGET SURVIVAL PHILOSOPHY'}
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-950 leading-tight">
               <span className="philosophy-heading-line block overflow-hidden">
-                BUILT FOR HIGH VELOCITY.
+                BUILT FOR ₹10,000 BUDGET SURVIVAL.
               </span>
               <span className="philosophy-heading-line block overflow-hidden mt-1 sm:mt-2">
                 ENGINEERED FOR{' '}
                 <span className="philosophy-highlight inline-block">
-                  <Highlight variant="green">ZERO DRIFT.</Highlight>
+                  <Highlight variant="green">ZERO DEFICIT.</Highlight>
                 </span>
               </span>
             </h2>
             <p className="philosophy-body text-base sm:text-xl text-zinc-600 leading-relaxed max-w-3xl font-normal">
-              We focus on delivering an uncompromising, high-density web operational center. Desktop and browser operations demand data density, keyboard efficiency, batch processing, and instantaneous cache synchronization with the authoritative central engine.
+              Most personal finance apps are passive record-keepers. SurvivalRun is an active financial co-pilot built for tight 30-day horizons. It treats every rupee as a unit of runway, enforces safe daily burn limits, and stops impulsive debt before it happens.
             </p>
           </div>
         </section>
@@ -321,10 +315,10 @@ export default function MarketingPage() {
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="parity-header max-w-3xl space-y-2">
               <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
-                {'// 03. ARCHITECTURAL CAPABILITIES'}
+                {'// 03. RUNWAY CAPABILITIES'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                Engineered for Dense Workflows & Real-Time Performance
+                Engineered for High-Pressure Budgeting &amp; Deficit Elimination
               </h2>
             </div>
 
@@ -333,28 +327,28 @@ export default function MarketingPage() {
               {/* Desktop Client Bento Card */}
               <div className="parity-card lg:col-span-6 bento-card p-8 flex flex-col justify-between space-y-6 bg-white/80 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-200/60 shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200/60 shadow-sm">
                     <Monitor className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                    Next.js 16 Operational Center
+                    Dynamic Daily Burn Calculator
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
-                    Designed for heavy operational density. Filter hundreds of domain items, manage multi-megabyte file uploads via Multer, run batch updates, and inspect full telemetry dashboards.
+                    Automatically computes your uncompromised daily safe-spend allowance after subtracting locked commitments (rent, utilities) and emergency cushion across all 30 days.
                   </p>
                 </div>
                 <div className="pt-6 border-t border-black/[0.06] space-y-2.5 text-xs font-medium text-zinc-700">
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Next.js App Router + React 19 Hydration</span>
+                    <span>Real-Time Daily Allowance Recalculation</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Reactive AuthContext & Token Interception</span>
+                    <span>Protected Emergency Buffer Locking</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Accessible Keyboard Navigation & Modals</span>
+                    <span>Sub-25ms Live Dashboard Hydration</span>
                   </div>
                 </div>
               </div>
@@ -362,28 +356,28 @@ export default function MarketingPage() {
               {/* Express REST & AI Engine Bento Card */}
               <div className="parity-card lg:col-span-6 bento-card p-8 flex flex-col justify-between space-y-6 bg-white/80 backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200/60 shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-200/60 shadow-sm">
                     <Sparkles className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                    Express REST & MongoDB Atlas
+                    What-If Decision Simulator &amp; Paise Precision
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
-                    Built for resilient throughput and atomic mutations. Incorporates Mongoose models, strict rate limiting, Helmet security, and enterprise data integrity.
+                    Test impulse purchases before parting with your money. Experience zero floating-point rounding errors with native integer paise accounting backed by MongoDB Atlas.
                   </p>
                 </div>
                 <div className="pt-6 border-t border-black/[0.06] space-y-2.5 text-xs font-medium text-zinc-700">
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Mongoose Schema Validations & Indexing</span>
+                    <span>Instant Spend Impact &amp; Deficit Warnings</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Role-Based Access Control & Rate Limiting</span>
+                    <span>100% Integer Paise Mathematical Precision</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Sub-40ms Atomic State Mutations</span>
+                    <span>Ring-Fenced Recurring Commitments Ledger</span>
                   </div>
                 </div>
               </div>
@@ -398,13 +392,13 @@ export default function MarketingPage() {
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="sync-header text-left max-w-3xl space-y-2">
               <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
-                {'// 04. SYNCHRONIZATION CORRIDOR'}
+                {'// 04. INSTANT BUDGET RECALCULATION'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                One Core Backend. Zero State Drift.
+                Every Rupee Logged. Runway Updated Instantly.
               </h2>
               <p className="text-sm text-zinc-600 leading-relaxed">
-                Watch operational state changes synchronize with MongoDB Atlas and telemetry feeds in under 35ms through atomic Mongoose mutations.
+                Log an expense from your mobile browser or desktop. Watch your remaining daily allowance and runway health adapt immediately across all devices in under 25ms.
               </p>
             </div>
 
@@ -413,26 +407,26 @@ export default function MarketingPage() {
               {/* Desktop Dispatch Preview */}
               <div className="sync-desktop-card md:col-span-7 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>WORKSPACE DISPATCH</span>
-                  <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">Port 3000</span>
+                  <span>RUNWAY TRANSACTION DISPATCH</span>
+                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">Integer Paise</span>
                 </div>
                 <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
-                  <div className="text-zinc-500">{'// Dispatching item state change'}</div>
-                  <div className="font-semibold">mutateItem(&apos;66f1...&apos;, &#123; status: &apos;resolved&apos; &#125;)</div>
-                  <div className="text-emerald-600 font-semibold">✓ Express REST confirmed: HTTP 200 OK</div>
+                  <div className="text-zinc-500">{'// Deducting grocery purchase'}</div>
+                  <div className="font-semibold">recordTransaction(&apos;txn_08&apos;, &#123; amountPaise: 65000, category: &apos;food&apos; &#125;)</div>
+                  <div className="text-emerald-600 font-semibold">✓ Engine confirmed: Allowance adjusted to ₹338.75/day</div>
                 </div>
               </div>
 
               {/* Database Telemetry Preview */}
               <div className="sync-mobile-card md:col-span-5 bento-card p-6 space-y-4 bg-white/85 backdrop-blur-md transition-all duration-300 hover:shadow-lg">
                 <div className="flex items-center justify-between border-b border-black/[0.06] pb-3 text-xs font-semibold text-zinc-800">
-                  <span>DATABASE PERSISTENCE</span>
-                  <span className="font-mono text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">MongoDB Atlas</span>
+                  <span>PERSISTENT RUNWAY STATE</span>
+                  <span className="font-mono text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">MongoDB Atlas</span>
                 </div>
                 <div className="space-y-2 font-mono text-xs text-zinc-900 bg-zinc-50/80 p-4 rounded-xl border border-black/[0.06]">
-                  <div className="text-zinc-500">{'// Revalidated via cache invalidation'}</div>
-                  <div className="font-semibold">onItemCacheInvalidate(&apos;66f1...&apos;)</div>
-                  <div className="text-emerald-600 font-semibold">✓ Dashboard updated in &lt; 25ms</div>
+                  <div className="text-zinc-500">{'// Real-time cache revalidation'}</div>
+                  <div className="font-semibold">revalidateRunwaySnapshot()</div>
+                  <div className="text-emerald-600 font-semibold">✓ Dashboard synced in &lt; 20ms</div>
                 </div>
               </div>
             </div>
@@ -449,7 +443,7 @@ export default function MarketingPage() {
                 {'// 05. INTERACTIVE WORKFLOW'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                End-to-End Execution with Real Payloads
+                Budget Management with Live Payloads
               </h2>
             </div>
 
@@ -463,27 +457,27 @@ export default function MarketingPage() {
         <section id="heritage" className="engineering-section py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="engineering-copy-col lg:col-span-5 space-y-6 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-50 text-amber-800 border border-amber-200/80 rounded-full text-xs font-semibold shadow-sm w-fit">
-                <Code2 className="w-4 h-4 text-amber-600" />
-                <span>ENGINEERING FOUNDATION</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full text-xs font-semibold shadow-sm w-fit">
+                <Code2 className="w-4 h-4 text-emerald-600" />
+                <span>FINANCIAL ENGINE FOUNDATION</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 leading-tight">
-                Built for Production Speed.
+                Engineered for Month-End Solvency.
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
-                APP was engineered to solve a concrete challenge: how to architect a production-ready web system at speed without introducing architectural drift or sacrificing security.
+                SurvivalRun was engineered to solve a real human problem: how to survive an entire 30-day month on a strict ₹10,000 budget without descending into debt or running out of funds before payday.
               </p>
               <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-                Engineered with strict API contracts, end-to-end type safety, atomic state synchronization, and biometric persistence built into the core baseline from day one.
+                Powered by a rock-solid Next.js web application and Node.js REST backend, combining strict integer paise math, real-time What-If simulations, and dynamic safe daily burn algorithms.
               </p>
               <div className="space-y-3 font-mono text-xs font-semibold text-zinc-800 pt-1">
                 <div className="p-3.5 rounded-xl bg-white/80 backdrop-blur-sm border border-black/[0.06] flex items-center justify-between">
-                  <span>ARCHITECTURAL INTEGRITY</span>
-                  <span className="bg-zinc-900 text-white px-2.5 py-0.5 rounded text-xs">100% VERIFIED</span>
+                  <span>RUNWAY MATH PRECISION</span>
+                  <span className="bg-zinc-900 text-white px-2.5 py-0.5 rounded text-xs">100% INTEGER PAISE</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/80 backdrop-blur-sm border border-black/[0.06] flex items-center justify-between">
-                  <span>WEB RUNTIME</span>
-                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded text-xs">NEXT.JS 16 SAFE</span>
+                  <span>MONTH-END TARGET</span>
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded text-xs">ZERO DEFICIT GUARANTEE</span>
                 </div>
               </div>
             </div>
@@ -495,7 +489,7 @@ export default function MarketingPage() {
                   <div className="relative aspect-[1921/558] w-full rounded-2xl bg-zinc-50/70 overflow-hidden border border-black/[0.06] shadow-md">
                     <Image
                       src="/logo.webp"
-                      alt="Prompt Run Logo"
+                      alt="SurvivalRun Logo"
                       fill
                       sizes="(max-width: 768px) 100vw, 850px"
                       className="object-cover object-center"
@@ -504,10 +498,10 @@ export default function MarketingPage() {
                   </div>
                   <div className="pt-4 flex items-center justify-between text-zinc-800 text-xs font-medium">
                     <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-blue-600" />
-                      Official Architecture Artifact
+                      <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                      Official SurvivalRun Brand
                     </span>
-                    <span className="text-zinc-500 font-mono text-xs">Next.js + Express Core</span>
+                    <span className="text-zinc-500 font-mono text-xs">₹10,000 Budget Command Center</span>
                   </div>
                 </div>
               </TiltCard>
@@ -536,7 +530,7 @@ export default function MarketingPage() {
                   <div className="p-4 text-center">
                     <div className="font-bold text-zinc-900 text-lg">Tanish</div>
                     <div className="text-xs text-zinc-500 font-medium mt-0.5">
-                      Lead Architect & Engineer
+                      Lead Architect &amp; Financial Systems Designer
                     </div>
                   </div>
                 </div>
@@ -545,14 +539,14 @@ export default function MarketingPage() {
 
             <div className="tanish-copy-col lg:col-span-7 space-y-6 order-1 lg:order-2">
               <div className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-500">
-                {'// 07. ENGINEERING CONTEXT'}
+                {'// 07. ARCHITECTURAL VISION'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 leading-tight">
-                Engineered with Discipline.{' '}
-                <Highlight variant="green">Delivered for Speed.</Highlight>
+                Designed with Mathematical Rigor.{' '}
+                <Highlight variant="green">Built for Financial Peace.</Highlight>
               </h2>
               <p className="text-base text-zinc-600 leading-relaxed italic font-normal">
-                &ldquo;A great engineering product is built upon an authoritative backend and strong data contracts powering a responsive, high-density web workspace.&rdquo;
+                &ldquo;Living on a ₹10,000 monthly budget shouldn&apos;t feel like gambling. By engineering integer precision, active impulse simulation, and automated daily allowances, we give people complete control over their money.&rdquo;
               </p>
               <div className="flex items-center gap-4 pt-2 text-xs font-medium">
                 <div className="p-3.5 rounded-xl bg-white/85 border border-black/[0.06] shadow-sm backdrop-blur-sm">
@@ -560,8 +554,8 @@ export default function MarketingPage() {
                   <span className="text-zinc-900 font-semibold">Tanishkagathara7</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white/85 border border-black/[0.06] shadow-sm backdrop-blur-sm">
-                  <span className="text-zinc-400 block text-xs font-mono">APPLICATION</span>
-                  <span className="text-zinc-900 font-semibold">APP Web Operational Core</span>
+                  <span className="text-zinc-400 block text-xs font-mono">MISSION</span>
+                  <span className="text-zinc-900 font-semibold">Survive 30 Days With ₹10k</span>
                 </div>
               </div>
             </div>
@@ -587,7 +581,7 @@ export default function MarketingPage() {
                 {'// 09. FREQUENTLY ASKED QUESTIONS'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-                Technical FAQ
+                Runway &amp; Financial Engine FAQ
               </h2>
             </div>
 
@@ -600,22 +594,22 @@ export default function MarketingPage() {
            ======================================================== */}
         <section className="section-cta py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] relative overflow-hidden">
           <div className="max-w-4xl mx-auto text-left relative z-10 space-y-8">
-            <div className="cta-badge inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-50 text-blue-700 border border-blue-200/80 rounded-full text-xs font-semibold shadow-sm">
+            <div className="cta-badge inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200/80 rounded-full text-xs font-semibold shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>DEPLOYMENT READY</span>
+              <span>30-DAY SURVIVAL CHALLENGE</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950 leading-tight">
               <span className="cta-headline-line block overflow-hidden">
-                Built once.
+                Survive the month.
               </span>
               <span className="cta-headline-line block overflow-hidden mt-1">
-                Designed for <Highlight variant="blue">performance.</Highlight>
+                Conquer your <Highlight variant="green">₹10,000 runway.</Highlight>
               </span>
             </h2>
 
             <p className="cta-subhead max-w-xl text-base text-zinc-600 leading-relaxed font-normal">
-              Launch the Next.js desktop operations center to experience synchronized real-time workflows and AI copilot integration.
+              Take complete command of your daily burn rate, protect essential bills, and lock your savings cushion today.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -623,7 +617,7 @@ export default function MarketingPage() {
                 href="/signup"
                 className="cta-button btn-primary px-8 py-4 text-xs font-semibold tracking-wide shadow-md shadow-zinc-950/10 hover:shadow-lg transition-all inline-flex items-center"
               >
-                <span>Get Started Now</span>
+                <span>Launch Your Runway</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link

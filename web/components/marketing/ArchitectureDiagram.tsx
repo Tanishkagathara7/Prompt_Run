@@ -19,43 +19,43 @@ export const ArchitectureDiagram: React.FC = () => {
   const nodes: Record<string, ArchNode> = {
     web: {
       id: 'web',
-      name: 'Next.js 16 Web Workspace',
-      role: 'DESKTOP OPERATIONAL CENTER',
+      name: 'Next.js 16 Runway Command',
+      role: 'FINANCIAL RUNWAY WORKSPACE',
       badge: 'NODE 01',
-      accentBg: 'from-blue-500/10 to-transparent',
-      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
-      tech: ['Next.js App Router', 'React 19', 'Tailwind CSS', 'Lenis Smooth Motion', 'AuthContext'],
-      specs: 'High-density desktop operational workspace. Direct client-side token interception, responsive grid views, and batch asset uploads.',
+      accentBg: 'from-emerald-500/10 to-transparent',
+      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      tech: ['Next.js App Router', 'React 19', 'Tailwind CSS', 'Lenis Smooth Motion', 'Paise Formatter'],
+      specs: 'High-density ₹10,000 budget operations center. Live daily burn allowances, reactive What-If simulators, and integer-precision cashflow trackers.',
     },
     backend: {
       id: 'backend',
       name: 'Node.js / Express Core Server',
-      role: 'CENTRAL REST & GATEWAY',
+      role: 'FINANCIAL CALCULATION ENGINE',
       badge: 'CORE ENGINE',
-      accentBg: 'from-emerald-500/10 to-transparent',
-      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      tech: ['Express.js', 'Mongoose ODM', 'JWT Auth', 'Multer Storage', 'RBAC Middleware'],
-      specs: 'Central REST router running on port 5000. Provides Helmet security headers, rate limiting, and atomic transaction handling.',
+      accentBg: 'from-blue-500/10 to-transparent',
+      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+      tech: ['Express.js', 'Integer Math', 'JWT Auth', 'Runway Validator', 'RBAC Middleware'],
+      specs: 'Central financial engine running on port 5000. Performs safe burn projections, commitment locking, and atomic MongoDB Atlas transactions.',
     },
     analytics: {
       id: 'analytics',
-      name: 'Telemetry & Analytics Pipeline',
-      role: 'REAL-TIME DATA AGGREGATION',
-      badge: 'METRICS ENGINE',
+      name: 'Burn Rate & What-If Pipeline',
+      role: 'IMPULSE PREDICTION ENGINE',
+      badge: 'SIMULATOR',
       accentBg: 'from-amber-500/10 to-transparent',
       badgeColor: 'bg-amber-50 text-amber-700 border-amber-200',
-      tech: ['Aggregation Pipelines', 'Activity Telemetry', 'Resolution Rates', 'Category Triage'],
-      specs: 'Real-time telemetry and aggregation layer computing workspace runway metrics, expense settlement status, and category velocity.',
+      tech: ['What-If Projection', 'Deficit Warning', 'Paise Aggregation', 'Category Burn'],
+      specs: 'Mathematical simulation engine predicting allowance reductions before impulse purchases are confirmed and ring-fencing savings buffers.',
     },
     database: {
       id: 'database',
       name: 'MongoDB Atlas Persistence',
-      role: 'DOCUMENT STATE STORE',
+      role: 'PAISE LEDGER DATASTORE',
       badge: 'PERSISTENCE',
       accentBg: 'from-violet-500/10 to-transparent',
       badgeColor: 'bg-violet-50 text-violet-700 border-violet-200',
-      tech: ['Mongoose Schemas', 'User Entities', 'Items Pipeline', 'Notification Collections'],
-      specs: 'Primary persistent datastore. Enforces strict schema validations and indexed queries across domain items and user collections.',
+      tech: ['Transaction Schemas', 'Budget Profiles', 'Savings Collections', 'Indexed Queries'],
+      specs: 'Primary persistent datastore. Enforces schema validations and indexed queries across all financial transactions, commitments, and user profiles.',
     },
   };
 
@@ -65,13 +65,13 @@ export const ArchitectureDiagram: React.FC = () => {
     <div className="w-full space-y-8 select-none">
       <div className="topology-header max-w-2xl space-y-2">
         <div className="text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase">
-          {'// 08. TOPOLOGY & DATA BUS'}
+          {'// 08. FINANCIAL TOPOLOGY & DATA BUS'}
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-          CENTRAL ENGINE & WEB TOPOLOGY
+          CENTRAL BUDGET RUNWAY TOPOLOGY
         </h2>
         <p className="text-sm text-zinc-600">
-          Authoritative REST architecture powering the web workspace with zero state divergence.
+          Authoritative financial calculation engine and integer paise ledger powering the SurvivalRun command center.
         </p>
       </div>
 

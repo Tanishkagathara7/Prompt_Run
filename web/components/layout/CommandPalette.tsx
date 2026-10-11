@@ -165,13 +165,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <div
-                          className={`w-2 h-2 rounded-full shrink-0 ${
-                            item.status === 'completed'
+                          className={`w-2 h-2 rounded-full shrink-0 ${item.status === 'completed'
                               ? 'bg-emerald-500'
                               : isCritical
-                              ? 'bg-rose-500 animate-pulse'
-                              : 'bg-amber-500'
-                          }`}
+                                ? 'bg-rose-500 animate-pulse'
+                                : 'bg-amber-500'
+                            }`}
                         />
                         <div className="truncate">
                           <p className="text-xs font-semibold text-zinc-900 group-hover:text-indigo-600 transition-colors truncate">

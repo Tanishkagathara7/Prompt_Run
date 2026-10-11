@@ -13,68 +13,68 @@ export interface WordHighlightItem {
 
 export const HERO_WORD_SEQUENCE: WordHighlightItem[] = [
   {
-    id: 'precision',
-    word: 'Precision',
-    bgColor: '#2563EB',       // Vibrant Royal Blue
-    textColor: '#FFFFFF',     // Crisp White
-    borderColor: '#1D4ED8',
-    shadowColor: 'rgba(37, 99, 235, 0.35)',
-  },
-  {
-    id: 'operations',
-    word: 'Operations',
-    bgColor: '#EC4899',       // Vibrant Magenta / Pink
+    id: 'survive',
+    word: 'Survive',
+    bgColor: '#5B45F5',       // Vibrant Indigo
     textColor: '#FFFFFF',
-    borderColor: '#DB2777',
-    shadowColor: 'rgba(236, 72, 153, 0.35)',
+    borderColor: '#4834DF',
+    shadowColor: 'rgba(91, 69, 245, 0.35)',
   },
   {
-    id: 'on-1',
-    word: 'on',
-    bgColor: '#10B981',       // Vibrant Emerald
+    id: 'budget',
+    word: 'Budget',
+    bgColor: '#16B981',       // Emerald Green
     textColor: '#FFFFFF',
     borderColor: '#059669',
-    shadowColor: 'rgba(16, 185, 129, 0.35)',
+    shadowColor: 'rgba(22, 185, 129, 0.35)',
   },
   {
-    id: 'desktop',
-    word: 'Desktop',
-    bgColor: '#F59E0B',       // Vibrant Amber / Gold
-    textColor: '#FFFFFF',     // Pure White
+    id: 'for-1',
+    word: 'for',
+    bgColor: '#F59E0B',       // Amber
+    textColor: '#FFFFFF',
     borderColor: '#D97706',
     shadowColor: 'rgba(245, 158, 11, 0.35)',
   },
   {
-    id: 'native',
-    word: 'Native',
-    bgColor: '#8B5CF6',       // Vibrant Purple / Violet
+    id: 'days-1',
+    word: '30-Days',
+    bgColor: '#2563EB',       // Royal Blue
+    textColor: '#FFFFFF',
+    borderColor: '#1D4ED8',
+    shadowColor: 'rgba(37, 99, 235, 0.35)',
+  },
+  {
+    id: 'with-1',
+    word: 'with',
+    bgColor: '#8B5CF6',       // Purple
     textColor: '#FFFFFF',
     borderColor: '#7C3AED',
     shadowColor: 'rgba(139, 92, 246, 0.35)',
   },
   {
-    id: 'velocity',
-    word: 'Velocity',
-    bgColor: '#EC4899',       // Vibrant Rose / Pink
+    id: 'amount-1',
+    word: '₹10,000',
+    bgColor: '#10B981',       // Emerald
+    textColor: '#FFFFFF',
+    borderColor: '#059669',
+    shadowColor: 'rgba(16, 185, 129, 0.35)',
+  },
+  {
+    id: 'zero',
+    word: 'Zero',
+    bgColor: '#EC4899',       // Rose / Pink
     textColor: '#FFFFFF',
     borderColor: '#DB2777',
     shadowColor: 'rgba(236, 72, 153, 0.35)',
   },
   {
-    id: 'on-2',
-    word: 'on',
-    bgColor: '#06B6D4',       // Vibrant Cyan
+    id: 'deficit',
+    word: 'Deficit',
+    bgColor: '#5B45F5',       // Indigo
     textColor: '#FFFFFF',
-    borderColor: '#0891B2',
-    shadowColor: 'rgba(6, 182, 212, 0.35)',
-  },
-  {
-    id: 'web',
-    word: 'Web',
-    bgColor: '#10B981',       // Vibrant Emerald
-    textColor: '#FFFFFF',
-    borderColor: '#059669',
-    shadowColor: 'rgba(16, 185, 129, 0.35)',
+    borderColor: '#4834DF',
+    shadowColor: 'rgba(91, 69, 245, 0.35)',
   },
 ];
 
