@@ -1,135 +1,139 @@
-# Project Architecture
+# Project Architecture: Survive the Month
+**Project**: Broke But Functional — Survive the Month  
+**Repository**: `Tanishkagathara7/Prompt_Run`  
+**Deployments**:
+- **Backend API**: Render (`https://prompt-run.onrender.com/api`)
+- **Frontend Web**: Vercel (`https://prompt-run-tawny.vercel.app`)
 
-## Overview
+---
 
-A two-tier web platform with a Next.js 16 frontend and a Node.js/Express backend, connected via REST API, using MongoDB Atlas for persistence.
+## 1. System Topology Overview
 
-```
-┌─────────────────────────────────────────────────────┐
-│                   Web Client                        │
-│          Next.js 16 App Router (port 3000)          │
-│                                                     │
-│  ┌─────────────┐  ┌──────────────┐  ┌───────────┐  │
-│  │  Marketing  │  │  Auth Pages  │  │ App Pages │  │
-│  │  (public)   │  │  /login      │  │ /dashboard│  │
-│  │  page.tsx   │  │  /signup     │  │ /items    │  │
-│  └─────────────┘  └──────────────┘  └───────────┘  │
-│                                                     │
-│  lib/api/client.ts ──────────────────────────────┐  │
-└──────────────────────────────────────────────────┼──┘
-                                                   │ REST
-                                                   ▼
-┌─────────────────────────────────────────────────────┐
-│                  Backend API                        │
-│          Node.js + Express (port 5000)              │
-│                                                     │
-│  Routes → Controllers → Services → Models           │
-│                                                     │
-│  /api/auth        JWT + OAuth (Google, GitHub)      │
-│  /api/items       DomainItem CRUD                   │
-│  /api/files       Multer file upload                │
-│  /api/analytics   Aggregated metrics                │
-│  /api/notifications Push + in-app alerts           │
-└──────────────────────────────────────────────────┬──┘
-                                                   │
-                                                   ▼
-                           ┌────────────────────────┐
-                           │   MongoDB Atlas         │
-                           │   (Mongoose ODM)        │
-                           │                        │
-                           │   User                 │
-                           │   DomainItem           │
-                           │   Notification         │
-                           └────────────────────────┘
-```
-
-## Directory Structure
+Survive the Month is built on a high-velocity, two-tier architecture tailored for sub-second micro-budget calculations, deterministic ledger operations, and resilient cloud hosting.
 
 ```
-Build_Fast/
+┌────────────────────────────────────────────────────────────────────────┐
+│                   Web Client (Vercel Production)                       │
+│                   Next.js 16 App Router (Turbopack)                    │
+│                                                                        │
+│  ┌──────────────────────┐  ┌───────────────────┐  ┌─────────────────┐  │
+│  │  Marketing & Story   │  │   Auth System     │  │ Command Center  │  │
+│  │  /page.tsx (Public)  │  │  /login & /signup │  │ /dashboard      │  │
+│  └──────────────────────┘  └───────────────────┘  └─────────────────┘  │
+│                                                            │           │
+│  ┌─────────────────────────────────────────────────────────┴─────────┐ │
+│  │  Client Financial Engine (web/lib/financialEngine.ts)             │ │
+│  │  - Integer-Paise Precision Math (1 INR = 100 Paise)               │ │
+│  │  - Dynamic Safe Daily Allowance Calculator                        │ │
+│  │  - "What-If" Impulse Decision Simulator                           │ │
+│  │  - Protected Savings Cushion Lock                                 │ │
+│  └─────────────────────────────────────────────────────────┬─────────┘ │
+│                                                            │           │
+│  web/lib/api/client.ts (Configured with Render Fallback)   │           │
+└────────────────────────────────────┬───────────────────────┴───────────┘
+                                     │ HTTPS REST / Bearer JWT
+                                     ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                   Backend API (Render Production)                      │
+│                   Node.js + Express + TypeScript                       │
+│                                                                        │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ Security & Middleware                                            │  │
+│  │ - Helmet Security Headers                                        │  │
+│  │ - CORS Policy (Vercel preview + localhost origins)               │  │
+│  │ - express-rate-limit (Brute-force protection)                    │  │
+│  │ - JWT Token Extraction & User Identity Verification              │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+│                                     │                                  │
+│  ┌──────────────────────────────────┴───────────────────────────────┐  │
+│  │ Controllers & Business Services                                  │  │
+│  │ - /api/auth: Register, Login, JWT issuing                        │  │
+│  │ - /api/items: Financial transaction ledger CRUD                  │  │
+│  │ - /api/analytics: Aggregate burn rate, essential breakdown       │  │
+│  │ - /api/notifications: Upcoming commitment reminders              │  │
+│  │ - /api/files: Multer receipt attachment processor                │  │
+│  └──────────────────────────────────┬───────────────────────────────┘  │
+└─────────────────────────────────────┼──────────────────────────────────┘
+                                      │ Mongoose ODM
+                                      ▼
+             ┌──────────────────────────────────────────────────┐
+             │       MongoDB Atlas Dedicated Cluster            │
+             │                                                  │
+             │  Collections:                                    │
+             │  • users (Profiles, cycle allowance)             │
+             │  • domainitems (Financial ledger entries)        │
+             │  • notifications (Commitment alerts)             │
+             │  • files (Uploaded receipts)                     │
+             └──────────────────────────────────────────────────┘
+```
+
+---
+
+## 2. Directory Structure
+
+```
+prmopt_run/
+├── project/                      # Authoritative FQE Blueprint Specifications
+│   ├── PROBLEM_STATEMENT.md      # Broke But Functional - Survive the Month
+│   ├── 02_PRODUCT_SPEC.md        # 5 core functional modules
+│   ├── 03_UX_PLAN.md             # Responsive breakpoints & interaction states
+│   ├── 05_DATA_MODEL.md          # Integer paise data schemas & invariants
+│   └── 13_CHANGE_LOG.md          # Architectural pivot & release log
 │
-├── web/                          # Next.js 16 App Router
-│   ├── app/
-│   │   ├── page.tsx              # Marketing landing page
-│   │   ├── layout.tsx            # Root layout + providers
-│   │   ├── (auth)/               # Login / Signup UI
-│   │   ├── (app)/                # Authenticated workspace
-│   │   │   ├── dashboard/
-│   │   │   ├── items/
-│   │   │   ├── ai-assistant/
-│   │   │   ├── files/
-│   │   │   └── notifications/
-│   │   └── auth/callback/        # OAuth redirect handlers
-│   ├── components/
-│   │   ├── auth/                 # Auth UI (login form, OAuth)
-│   │   ├── background/           # Decorative background systems
-│   │   ├── dashboard/            # Dashboard widgets
-│   │   ├── layout/               # Shell, Sidebar, Topbar
-│   │   ├── loading/              # Loading screens
-│   │   ├── marketing/            # Landing page sections
-│   │   ├── seo/                  # JSON-LD structured data
-│   │   └── ui/                   # Shared UI primitives
+├── web/                          # Next.js 16 App Router (Vercel)
+│   ├── app/                      # App router pages & layouts
+│   │   ├── page.tsx              # Bespoke Survive the Month landing page
+│   │   ├── (auth)/               # Unified authentication view
+│   │   └── (app)/                # Authenticated workspace
+│   │       ├── dashboard/        # Telemetry runway command center
+│   │       ├── items/            # High-density transaction ledger
+│   │       └── ...
+│   ├── components/               # Modular UI components
+│   │   ├── auth/                 # Brand-consistent authentication views
+│   │   ├── dashboard/            # Interactive runway widgets & simulator
+│   │   ├── layout/               # Sidebar, Topbar, CommandPalette
+│   │   └── ui/                   # Reusable accessible primitives
 │   ├── lib/
-│   │   ├── api/                  # Typed API client layer
-│   │   │   ├── client.ts         # Base fetch client + auth headers
-│   │   │   ├── auth.ts           # Auth API methods
-│   │   │   └── domain.ts         # DomainItem CRUD methods
-│   │   ├── context/              # React Contexts (Auth, Toast, Loading)
-│   │   ├── animations/           # GSAP / Lenis scroll animations
-│   │   ├── domain.config.ts      # UI labels, nav, landing config
-│   │   ├── types.ts              # Shared TS types (DomainItem, User)
-│   │   ├── seo.ts                # SEO config + canonical URL
-│   │   └── utils.ts              # Utility functions
-│   └── public/                   # Static assets
+│   │   ├── api/                  # Axios/fetch API client with Render fallback
+│   │   ├── financialEngine.ts    # Canonical integer-paise math engine
+│   │   ├── financialEngine.test.ts # Web verification suite
+│   │   └── domain.config.ts      # Domain configuration
+│   └── next.config.ts            # Optimized compression & security headers
 │
-├── backend/                      # Node.js + Express API
-│   └── src/
-│       ├── index.ts              # Server entry point
-│       ├── models/               # Mongoose schemas
-│       │   ├── User.ts
-│       │   └── DomainItem.ts
-│       ├── controllers/          # Route handlers
-│       ├── services/             # Business logic
-│       ├── routes/               # Express routers
-│       ├── middleware/           # Auth, error handling
-│       ├── config/               # DB connection, env
-│       ├── seeds/                # Demo data seeding
-│       ├── types/                # Backend TS types
-│       ├── utils/                # Helpers
-│       └── __tests__/            # Jest test suite
+├── backend/                      # Node.js + Express API (Render)
+│   ├── src/
+│   │   ├── __tests__/            # Comprehensive test suite (Node test runner)
+│   │   │   ├── financialEngine.test.ts # Financial math & risk tests
+│   │   │   ├── auth.test.ts      # JWT auth tests
+│   │   │   └── domainItem.test.ts# Ledger CRUD tests
+│   │   ├── controllers/          # Route controllers
+│   │   ├── models/               # Mongoose schemas
+│   │   ├── routes/               # Express route handlers
+│   │   ├── seeds/                # Realistic financial seed data
+│   │   └── index.ts              # Express application entry point
+│   └── package.json
 │
-├── scripts/                      # Domain generation
-│   └── analyzer/
-│       ├── productGenerationEngine.ts   # Applies generated spec to web/
-│       └── problemStatementAnalyzer.ts  # Parses problem text → spec
-│
-├── docs/                         # Project documentation
-│   └── PROBLEM_STATEMENT.md
-│
-├── .agents/                      # AI agent configuration
-│   └── skills/
-│       ├── code-review/
-│       ├── project-pivot/
-│       └── web-ux/
-│
-├── package.json                  # Workspace scripts
-├── tsconfig.json                 # Root TS config (scripts/)
-├── README.md
-└── PROJECT_ARCHITECTURE.md
+└── docs/
+    └── financial-rules.md        # Canonical financial accounting rules
 ```
 
-## Key Patterns
+---
 
-### Authentication
-- JWT stored in `localStorage` via `TOKEN_STORAGE_KEY`
-- Auth state managed by `AuthContext` (React Context)
-- Protected routes: `web/app/(app)/layout.tsx` redirects unauthenticated users
+## 3. Deployment Topology & Environments
 
-### Data Flow
-1. Component calls `itemsApi.getItems()` from `web/lib/api/domain.ts`
-2. API layer attaches Bearer token via `web/lib/api/client.ts`
-3. Express route → Controller → Service → Mongoose model → MongoDB
-4. Response mapped to `DomainItem[]` TypeScript type
+| Component | Provider | Live URL | Fallback Configuration |
+|---|---|---|---|
+| **Frontend** | Vercel | `https://prompt-run-tawny.vercel.app` | Auto-detects Render API backend when `NEXT_PUBLIC_API_URL` is omitted |
+| **Backend** | Render | `https://prompt-run.onrender.com` | `/api/health` monitoring, CORS preconfigured for Vercel production |
+| **Database** | MongoDB Atlas | Cloud Cluster | Connection pooling, auto-reconnect, indexed queries on `userId` |
 
-### Domain Adaptability
-The platform is domain-neutral. Run `npm run generate:product` with a problem statement to rewrite all UI labels, navigation, and entity names via `web/lib/domain.config.ts`.
+---
+
+## 4. Architectural Guarantees & Constraints
+
+1. **Integer-Paise Precision**:
+   Every monetary calculation ($1\text{ INR} = 100\text{ paise}$) avoids floating-point roundoff errors ($0.1 + 0.2 \neq 0.3$). User inputs are safely parsed via `Math.round(val * 100)` and localized using `Intl.NumberFormat('en-IN')`.
+2. **Timeline Boundary Protection**:
+   The simulation cycle is strictly bounded to 30 days. Day 30 and beyond clamp remaining days to 1 to guarantee zero division-by-zero crashes.
+3. **Double-Entry Reversal Discipline**:
+   Modifying or deleting a transaction restores the previous balance delta before computing updated totals, ensuring ledger immutability and audit compliance.
