@@ -64,7 +64,7 @@ export const ArchitectureDiagram: React.FC = () => {
   return (
     <div className="w-full space-y-8 select-none">
       <div className="topology-header max-w-2xl space-y-2">
-        <div className="text-xs font-mono font-bold tracking-wider text-zinc-500 uppercase">
+        <div className="text-xs font-mono font-bold tracking-wider text-emerald-600 uppercase">
           {'// 08. FINANCIAL TOPOLOGY & DATA BUS'}
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">

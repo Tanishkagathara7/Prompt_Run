@@ -326,7 +326,7 @@ export default function MarketingPage() {
         <section id="platform" className="section-parity py-12 sm:py-16 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="parity-header max-w-3xl space-y-2">
-              <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600">
                 {'// 03. RUNWAY CAPABILITIES'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
@@ -403,7 +403,7 @@ export default function MarketingPage() {
         <section id="sync" className="sync-section py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="sync-header text-left max-w-3xl space-y-2">
-              <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600">
                 {'// 04. INSTANT BUDGET RECALCULATION'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
@@ -451,7 +451,7 @@ export default function MarketingPage() {
         <section id="workflow" className="section-workflow relative z-10 py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-6xl mx-auto space-y-8 relative z-10">
             <div className="workflow-header max-w-2xl space-y-2">
-              <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600">
                 {'// 05. INTERACTIVE WORKFLOW'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
@@ -550,7 +550,7 @@ export default function MarketingPage() {
             </div>
 
             <div className="tanish-copy-col lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <div className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-500">
+              <div className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-600">
                 {'// 07. ARCHITECTURAL VISION'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 leading-tight">
@@ -589,7 +589,7 @@ export default function MarketingPage() {
         <section id="faq" className="section-faq py-16 sm:py-20 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
           <div className="max-w-4xl mx-auto space-y-10">
             <div className="faq-header text-left space-y-2">
-              <div className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600">
                 {'// 09. FREQUENTLY ASKED QUESTIONS'}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
