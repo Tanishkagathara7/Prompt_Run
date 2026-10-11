@@ -14,23 +14,30 @@ export const CategoryBreakdownCard: React.FC<CategoryBreakdownCardProps> = ({
   categories = [],
   totalIncidents = 0,
 }) => {
-  const [selectedRange, setSelectedRange] = useState('Last 30 days');
-
-  // Compute dynamic slices
-  const slices = categories.length > 0 && totalIncidents > 0
-    ? categories.map((c, i) => ({
-        label: c.category || 'General',
-        count: c.count,
-        percentage: Math.round((c.count / totalIncidents) * 100),
-        color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
-      }))
-    : [];
-
+  const [selectedRange] = useState('All time');
   const radius = 54;
   const strokeWidth = 16;
   const circumference = 2 * Math.PI * radius;
 
-  let cumulativeAngle = 0;
+  let currentOffset = 0;
+  const slices = categories.length > 0 && totalIncidents > 0
+    ? categories.map((c, i) => {
+        const percentage = Math.round((c.count / totalIncidents) * 100);
+        const dashLength = (percentage / 100) * circumference;
+        const spaceLength = circumference - dashLength;
+        const strokeDashoffset = -currentOffset;
+        currentOffset += dashLength;
+        return {
+          label: c.category || 'General',
+          count: c.count,
+          percentage,
+          color: CATEGORY_COLORS[i % CATEGORY_COLORS.length],
+          dashLength,
+          spaceLength,
+          strokeDashoffset,
+        };
+      })
+    : [];
 
   return (
     <div className="bg-white rounded-2xl border border-[#E6E9F0] p-6 shadow-xs flex flex-col justify-between h-full">
@@ -69,27 +76,20 @@ export const CategoryBreakdownCard: React.FC<CategoryBreakdownCardProps> = ({
           {/* SVG Donut Chart */}
           <div className="relative w-40 h-40 flex items-center justify-center shrink-0">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 140 140">
-              {slices.map((slice, i) => {
-                const dashLength = (slice.percentage / 100) * circumference;
-                const spaceLength = circumference - dashLength;
-                const strokeDashoffset = -cumulativeAngle;
-                cumulativeAngle += dashLength;
-
-                return (
-                  <circle
-                    key={i}
-                    cx="70"
-                    cy="70"
-                    r={radius}
-                    fill="transparent"
-                    stroke={slice.color}
-                    strokeWidth={strokeWidth}
-                    strokeDasharray={`${dashLength} ${spaceLength}`}
-                    strokeDashoffset={strokeDashoffset}
-                    strokeLinecap="butt"
-                  />
-                );
-              })}
+              {slices.map((slice, i) => (
+                <circle
+                  key={i}
+                  cx="70"
+                  cy="70"
+                  r={radius}
+                  fill="transparent"
+                  stroke={slice.color}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={`${slice.dashLength} ${slice.spaceLength}`}
+                  strokeDashoffset={slice.strokeDashoffset}
+                  strokeLinecap="butt"
+                />
+              ))}
             </svg>
 
             {/* Central Label */}

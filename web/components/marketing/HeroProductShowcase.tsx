@@ -9,10 +9,7 @@ import {
   Search,
   CheckCircle2,
   AlertTriangle,
-  ArrowUpRight,
-  TrendingDown,
   ShieldCheck,
-  Zap,
 } from 'lucide-react';
 
 export const HeroProductShowcase: React.FC = () => {

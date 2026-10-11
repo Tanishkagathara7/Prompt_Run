@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useLoading } from '@/lib/context/LoadingContext';
-import { domainConfig } from '@/lib/domain.config';
 import { isReducedMotion } from '@/lib/animations/motionSystem';
 import LoadingLines from '@/components/ui/loading-lines';
 

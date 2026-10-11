@@ -7,8 +7,8 @@ import { domainConfig } from '@/lib/domain.config';
 export const InteractiveDemonstrator: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  const entity = domainConfig.domain.primaryEntityName;
-  const category = domainConfig.domain.categories[0] || 'Operational';
+  const _entity = domainConfig.domain.primaryEntityName;
+  const _category = domainConfig.domain.categories[0] || 'Operational';
 
   const steps = [
     {
