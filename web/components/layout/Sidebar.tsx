@@ -295,7 +295,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {user?.name || 'Operator'}
                   </p>
                   <p className="text-[10px] text-[#8692A6] truncate leading-tight mt-0.5">
-                    {user?.email || 'operator@pulse.io'}
+                    {user?.email || 'runner@survivalrun.app'}
                   </p>
                 </div>
               </div>
@@ -314,7 +314,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div className="flex flex-col items-center gap-2 pt-1">
               <div
                 className="w-8 h-8 rounded-full bg-[#EDE8FF] border border-[#DDD6FE] text-[#5C4CF6] flex items-center justify-center font-bold text-xs cursor-pointer"
-                title={`${user?.name || 'Operator'} (${user?.email || 'operator@pulse.io'})`}
+                title={`${user?.name || 'Operator'} (${user?.email || 'runner@survivalrun.app'})`}
               >
                 {user?.name ? user.name.slice(0, 2).toUpperCase() : 'OP'}
               </div>

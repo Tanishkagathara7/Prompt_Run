@@ -273,10 +273,22 @@ export default function MarketingPage() {
         </section>
 
         {/* ========================================================
-            01.5 PRODUCT STAGE SHOWCASE (DEDICATED SECTION)
+            01. INTERACTIVE RUNWAY DASHBOARD (DEDICATED SECTION)
            ======================================================== */}
-        <section id="product" className="product-stage-section relative pt-6 sm:pt-10 pb-8 sm:pb-12 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
-          <div className="max-w-5xl mx-auto relative z-10">
+        <section id="product" className="product-stage-section relative pt-12 sm:pt-16 pb-12 sm:pb-16 px-4 sm:px-6 border-b border-black/[0.06] scroll-mt-20">
+          <div className="max-w-6xl mx-auto space-y-8 relative z-10">
+            <div className="product-stage-header max-w-3xl space-y-2">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-600">
+                {'// 01. INTERACTIVE RUNWAY DASHBOARD'}
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
+                Live 30-Day Budget Runway Command Center
+              </h2>
+              <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
+                Experience the live operational workspace. Switch between the Runway Dashboard, Expense Ledger, Audit Receipts, and Priority Alerts using the interactive sidebar.
+              </p>
+            </div>
+
             <div className="hero-product-stage">
               <HeroProductShowcase />
             </div>
@@ -286,8 +298,8 @@ export default function MarketingPage() {
         {/* ========================================================
             02. EDITORIAL STATEMENT: CINEMATIC CONTRAST
            ======================================================== */}
-        <section className="section-philosophy py-10 sm:py-14 px-4 sm:px-6 border-b border-black/[0.06]">
-          <div className="max-w-5xl mx-auto space-y-5">
+        <section className="section-philosophy py-12 sm:py-16 px-4 sm:px-6 border-b border-black/[0.06]">
+          <div className="max-w-6xl mx-auto space-y-5">
             <div className="philosophy-eyebrow font-mono text-xs font-semibold uppercase tracking-wider text-emerald-600">
               {'// 02. BUDGET SURVIVAL PHILOSOPHY'}
             </div>
